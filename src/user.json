@@ -1,0 +1,13 @@
+const user = {
+            "email": "email@sample.com",
+            "fname": "Veera Reddy",
+            "items": "3000",
+            "lname": "B",
+            "name": "Veera Reddy B",
+            "order": "Veera Books",
+            "orderno": "4001",
+            "phone": "8123456789",
+            "price": "140",
+            "total": "4,20,000",
+            "uid": "1575303448945"
+          }
