@@ -25,7 +25,7 @@ class App extends React.Component {
   }
   render() {
     return (
-      <Router>
+      <Router basename='/viswa'>
         <div className="container-fluid">
           <div className="row">
             <div className='col-xl-12'>
@@ -45,13 +45,13 @@ class App extends React.Component {
           </div>
           <div className="row  my-2">
             <div className="col-xl-12">
-              <Switch>
+              {/* <Switch> */}
                 <Route exact path="/" component={Home} />
                 <Route path="/olist" render={props => <OrderDetailsList users={this.state.users} update={this.updateData} />} />
                 <Route path="/od" render={props => <OrderDetails users={this.state.users} />} />
                 <Route path="/add" render={props => <AddOrder users={this.state.users} action={this.addData} />} />
                 <Route path="/update" render={props => <Update user={this.state.users[6]} update={this.updateData} />} />
-              </Switch>
+              {/* </Switch> */}
             </div>
           </div>
         </div>
