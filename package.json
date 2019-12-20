@@ -5,10 +5,13 @@
   "dependencies": {
     "bootstrap": "^4.4.1",
     "firebase": "^7.5.2",
+    "jquery": "^3.4.1",
     "react": "^16.12.0",
+    "react-bootstrap": "^1.0.0-beta.16",
     "react-dom": "^16.12.0",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "^3.3.0"
+    "react-scripts": "^3.3.0",
+    "redux": "^4.0.4"
   },
   "homepage": "https://ravichida.github.io/viswa",
   "scripts": {
@@ -35,6 +38,10 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^2.1.1"
+    "gh-pages": "^2.1.1",
+    "prop-types": "^15.7.2",
+    "react-redux": "^7.1.3",
+    "react-router-redux": "^4.0.8",
+    "styled-components": "^4.4.1"
   }
 }

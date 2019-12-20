@@ -12,7 +12,7 @@ class AddOrder extends React.Component{
       return (
         <div className='row'>
             <div className='col-xl-12'>
-            <h4>Add Order</h4>
+            <h4 className='my-3'>Add Order</h4>
             <form>
                 <div className="form-row">
                 <input type='hidden' ref='uid' />

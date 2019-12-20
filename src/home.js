@@ -9,7 +9,7 @@ class Home extends React.Component{
         return (
             <div className='row'>
                 <div className='col-xl-12'>
-                    <h2>Home page</h2>
+                    <h2 className='my-3'>Home page</h2>
                 </div>
             </div>
         )

@@ -8,7 +8,7 @@ class OrderDetails extends React.Component{
         return (
             <div className='row'>
             <div className='col-xl-12'>
-            <h4>Order Details</h4>
+            <h4 className='my-3'>Order Details</h4>
                 { 
                 this.props.users
                     .map(user => 
