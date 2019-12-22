@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.js": "/viswa/static/js/main.aa5b5da4.chunk.js",
-    "main.js.map": "/viswa/static/js/main.aa5b5da4.chunk.js.map",
+    "main.js": "/viswa/static/js/main.c83cdbfe.chunk.js",
+    "main.js.map": "/viswa/static/js/main.c83cdbfe.chunk.js.map",
     "runtime-main.js": "/viswa/static/js/runtime-main.904a16ae.js",
     "runtime-main.js.map": "/viswa/static/js/runtime-main.904a16ae.js.map",
     "static/css/2.64a99b10.chunk.css": "/viswa/static/css/2.64a99b10.chunk.css",
-    "static/js/2.e0f2e9bc.chunk.js": "/viswa/static/js/2.e0f2e9bc.chunk.js",
-    "static/js/2.e0f2e9bc.chunk.js.map": "/viswa/static/js/2.e0f2e9bc.chunk.js.map",
+    "static/js/2.4fc1329b.chunk.js": "/viswa/static/js/2.4fc1329b.chunk.js",
+    "static/js/2.4fc1329b.chunk.js.map": "/viswa/static/js/2.4fc1329b.chunk.js.map",
     "index.html": "/viswa/index.html",
-    "precache-manifest.a4b0c5bf646614786ab13f14d173b052.js": "/viswa/precache-manifest.a4b0c5bf646614786ab13f14d173b052.js",
+    "precache-manifest.e2b7c198f1322d41c596c8bf1b579d2b.js": "/viswa/precache-manifest.e2b7c198f1322d41c596c8bf1b579d2b.js",
     "service-worker.js": "/viswa/service-worker.js",
     "static/css/2.64a99b10.chunk.css.map": "/viswa/static/css/2.64a99b10.chunk.css.map",
-    "static/js/2.e0f2e9bc.chunk.js.LICENSE": "/viswa/static/js/2.e0f2e9bc.chunk.js.LICENSE"
+    "static/js/2.4fc1329b.chunk.js.LICENSE": "/viswa/static/js/2.4fc1329b.chunk.js.LICENSE"
   },
   "entrypoints": [
     "static/js/runtime-main.904a16ae.js",
     "static/css/2.64a99b10.chunk.css",
-    "static/js/2.e0f2e9bc.chunk.js",
-    "static/js/main.aa5b5da4.chunk.js"
+    "static/js/2.4fc1329b.chunk.js",
+    "static/js/main.c83cdbfe.chunk.js"
   ]
 }
