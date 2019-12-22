@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "ab7b8c75db1c9478565d1b86fe749464",
+    "revision": "092ace9544ec14394d3e61d8cdc7b184",
     "url": "/viswa/index.html"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/viswa/static/js/2.4fc1329b.chunk.js.LICENSE"
   },
   {
-    "revision": "23e003b2ef89516cdce3",
-    "url": "/viswa/static/js/main.c1a957c5.chunk.js"
+    "revision": "498f244df577adb01aa2",
+    "url": "/viswa/static/js/main.a7c64284.chunk.js"
   },
   {
     "revision": "6e78a4674e43d2823c49",
