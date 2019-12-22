@@ -4,21 +4,11 @@ import ModalDialog from './modalDialog'
 class OrderDetailsList extends React.Component {
   constructor(props) {
     super(props);
-    this.updateData = this.updateData.bind(this);
+    this.editData = this.editData.bind(this);
     this.updateApp = this.updateApp.bind(this);
+    this.removeData = this.removeData.bind(this);
     this.state = {
-      user: {
-        uid: '',
-        fname: '',
-        lname: '',
-        email: '',
-        phone: '',
-        order: '',
-        orderno: '',
-        items: '',
-        price: '',
-        total: ''
-      }
+      user: {}
     }
   }
   render() {
@@ -53,8 +43,8 @@ class OrderDetailsList extends React.Component {
                         <td className="">{user.items}</td>
                         <td className="">{user.price}</td>
                         <td className="">{user.total}</td>
-                        <td className=""><button onClick={() => this.removeData(user)} className="btn btn-link">Delete</button></td>
-                        <td className=""><button onClick={() => this.updateData(user)} className="btn btn-link">Edit</button></td>
+                        <td className=""><button onClick={(event) => this.removeData(user, event)} className="btn btn-link">Delete</button></td>
+                        <td className=""><button onClick={(event) => this.editData(user, event)} className="btn btn-link">Edit</button></td>
                       </tr>
                     )
                 }
@@ -75,17 +65,27 @@ class OrderDetailsList extends React.Component {
 
   updateApp(user) {
     if (typeof (this.props.update) === 'function') {
-      console.log("updateParent OrderDList", user);
+      console.log("updateParent OrderDList.js", user);
       this.props.update(user);
       $("#orderModal").modal({ show: false })
     }
   }
 
-  updateData(user) {
+  removeData(user, e) {
+    e.preventDefault();
+    if (typeof (this.props.remove) === 'function') {
+      console.log("Remove Data @ odlist.js", user);
+      this.props.remove(user);
+    }
+  }
+
+  editData(user, e) {
+    e.preventDefault();
     $("#orderModal").modal({ show: true });
     this.setState({
       user: user
     });
   }
+  
 }
 export default OrderDetailsList;

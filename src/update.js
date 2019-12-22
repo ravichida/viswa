@@ -50,7 +50,7 @@ class Update extends React.Component {
         event.preventDefault();
         if (typeof this.props.update === 'function') {
             let user = {};
-            user = { ...this.state.user };
+            user = { ...this.state.user, name: this.state.user.fname + " " + this.state.user.lname };
             console.log("User details @ update.js", user);
             this.props.update(user);
         }
