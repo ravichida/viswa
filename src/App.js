@@ -22,10 +22,11 @@ class App extends React.Component {
       users: []
     }
     this.addData = this.addData.bind(this);
+    this.updateData = this.updateData.bind(this);
   }
   render() {
     return (
-      <Router basename='/viswa'>
+      <Router basename={process.env.PUBLIC_URL}>
         <div className="container-fluid">
           <div className="row">
             <div className='col-xl-12'>
@@ -35,23 +36,23 @@ class App extends React.Component {
           <div className="row">
             <div className="col-xl-12">
               <ul className="nav nav-tabs">
-                <li className="nav-item active"><a href="/" className="nav-link">Home</a></li>
-                <li className="nav-item"><a href="/olist" className="nav-link">Orders</a></li>
-                <li className="nav-item"><a href="/od" className="nav-link">Order Details</a></li>
-                <li className="nav-item"><a href="/add" className="nav-link">Add Order</a></li>
-                <li className="nav-item"><a href="/update" className="nav-link">Update Order</a></li>
+                <li className="nav-item"><Link to="/" className="nav-link">Home</Link></li>
+                <li className="nav-item"><Link to="/olist" className="nav-link">Orders</Link></li>
+                <li className="nav-item"><Link to="/od" className="nav-link">Order Details</Link></li>
+                <li className="nav-item"><Link to="/add" className="nav-link">Add Order</Link></li>
+                <li className="nav-item"><Link to="/update" className="nav-link">Update Order</Link></li>
               </ul>
             </div>
           </div>
           <div className="row  my-2">
             <div className="col-xl-12">
-              {/* <Switch> */}
+              <Switch>
                 <Route exact path="/" component={Home} />
                 <Route path="/olist" render={props => <OrderDetailsList users={this.state.users} update={this.updateData} />} />
                 <Route path="/od" render={props => <OrderDetails users={this.state.users} />} />
                 <Route path="/add" render={props => <AddOrder users={this.state.users} action={this.addData} />} />
-                <Route path="/update" render={props => <Update user={this.state.users[6]} update={this.updateData} />} />
-              {/* </Switch> */}
+                {/* <Route path="/update" render={props => <Update user={this.state.users[6]} update={this.updateData} />} /> */}
+              </Switch>
             </div>
           </div>
         </div>
@@ -105,38 +106,41 @@ class App extends React.Component {
 
   updateData = (user) => {
     console.log("updateData in app.js", user);
-    let fname = user.fname;
-    let lname = user.lname;
-    let email = user.email;
-    let phone = user.phone;
-    let order = user.order;
-    let orderno = user.orderno;
-    let items = user.items;
-    let price = user.price;
-    let name = user.name;
-    let total = user.total;
-    let uid = user.uid;
-    const condition = (fname && lname && name && email && phone && order && orderno && items && price && total);
-    if (uid && condition) {
-      console.log("Update condition met");
-      const { users } = this.state;
-      const devIndex = users.findIndex(data => {
-        return data.uid === uid
-      });
-      users[devIndex].fname = fname;
-      users[devIndex].lname = lname;
-      users[devIndex].name = name;
-      users[devIndex].email = email;
-      users[devIndex].phone = phone;
-      users[devIndex].order = order;
-      users[devIndex].orderno = orderno;
-      users[devIndex].items = items;
-      users[devIndex].price = price;
-      users[devIndex].total = total;
-      this.setState({ users });
-    }
+    if(user){
+      console.log("updateData user in app.js");
+      let fname = user.fname;
+      let lname = user.lname;
+      let email = user.email;
+      let phone = user.phone;
+      let order = user.order;
+      let orderno = user.orderno;
+      let items = user.items;
+      let price = user.price;
+      let name = user.name;
+      let total = user.total;
+      let uid = user.uid;
+      const condition = (fname && lname && name && email && phone && order && orderno && items && price && total);
+      if (uid && condition) {
+        console.log("Update condition met");
+        const { users } = this.state;
+        const devIndex = users.findIndex(data => {
+          return data.uid === uid
+        });
+        users[devIndex].fname = fname;
+        users[devIndex].lname = lname;
+        users[devIndex].name = name;
+        users[devIndex].email = email;
+        users[devIndex].phone = phone;
+        users[devIndex].order = order;
+        users[devIndex].orderno = orderno;
+        users[devIndex].items = items;
+        users[devIndex].price = price;
+        users[devIndex].total = total;
+        this.setState({ users });
+      }
     console.log("Update form details from app.js", this.state.users);
   }
+}
 }
 
 export default App;

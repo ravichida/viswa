@@ -1,9 +1,6 @@
 import React from 'react';
 
 class OrderDetails extends React.Component{
-    constructor(props){
-        super(props)
-    }
     render(){
         return (
             <div className='row'>

@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import $ from 'jquery';
 import ModalDialog from './modalDialog'
 class OrderDetailsList extends React.Component {
   constructor(props) {
     super(props);
     this.updateData = this.updateData.bind(this);
+    this.updateApp = this.updateApp.bind(this);
     this.state = {
       user: {
         uid: '',
@@ -23,6 +24,10 @@ class OrderDetailsList extends React.Component {
   render() {
     return (
       <div>
+        <div className='row'>
+          <div className='col-xl-12'>
+          </div>
+        </div>
         <div className='row'>
           <div className='col-xl-12'>
             <h4 className='my-3'>Order Details List</h4>
@@ -59,7 +64,7 @@ class OrderDetailsList extends React.Component {
         </div>
         <div className='row'>
           <div className='col-xl-12'>
-            <ModalDialog user={this.state.user} update={this.props.update, $("#orderModal").modal({ show: false })} />
+            <ModalDialog user={this.state.user} update={this.updateApp} />
             <div>
             </div>
           </div>
@@ -68,13 +73,19 @@ class OrderDetailsList extends React.Component {
     )
   }
 
+  updateApp(user) {
+    if (typeof (this.props.update) === 'function') {
+      console.log("updateParent OrderDList", user);
+      this.props.update(user);
+      $("#orderModal").modal({ show: false })
+    }
+  }
+
   updateData(user) {
     $("#orderModal").modal({ show: true });
     this.setState({
       user: user
     });
-    // console.log("odList user", this.state.user);
-    // console.log("param user", user);
   }
 }
 export default OrderDetailsList;

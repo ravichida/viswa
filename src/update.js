@@ -3,7 +3,7 @@ import React from 'react';
 class Update extends React.Component {
     constructor(props) {
         super(props);
-        this.handleFormChange = this.handleFormChange.bind(this);
+        this.updateChange = this.updateChange.bind(this);
         this.updateField = this.updateField.bind(this);
         this.uid = React.createRef();
         this.fname = React.createRef();
@@ -46,14 +46,14 @@ class Update extends React.Component {
         });
     }
 
-    handleFormChange = (event) => {
+    updateChange = (event) => {
         event.preventDefault();
         if (typeof this.props.update === 'function') {
-            let user = this.state.user;
+            let user = {};
+            user = { ...this.state.user };
+            console.log("User details @ update.js", user);
             this.props.update(user);
         }
-        // this.props.update(this.state.user);
-        // console.log("Update form details", this.state.user);
     }
 
     render() {
@@ -66,7 +66,7 @@ class Update extends React.Component {
                             <input type='hidden' ref={this.uid} value={this.state.user.uid || ''} />
                             <div className="form-group col-md-6">
                                 <label>Oder No</label>
-                                <input type="text" ref={this.orderno} value={this.state.user.orderno || ''} className="form-control" onChange={(e) => this.updateField("orderno", e)} placeholder="Oder No" />
+                                <input type="text" ref={this.orderno} value={this.state.user.orderno || ''} onChange={(e) => this.updateField("orderno", e)} className="form-control" placeholder="Oder No" />
                             </div>
                             <div className="form-group col-md-6">
                                 <label>Oder Name</label>
@@ -98,10 +98,10 @@ class Update extends React.Component {
                             </div>
                             <div className="form-group col-md-6">
                                 <label>Mobile / Phone No</label>
-                                <input type="number" ref={this.phone} value={this.state.user.phone || ''} className="form-control" placeholder="Mobile / Phone No" />
+                                <input type="number" ref={this.phone} value={this.state.user.phone || ''} onChange={(e) => this.updateField("phone", e)} className="form-control" placeholder="Mobile / Phone No" />
                             </div>
                         </div>
-                        <button type="button" className="btn btn-primary" onClick={this.handleFormChange} data-toggle="modal" data-target="#orderModal" data-show="false">Save</button>
+                        <button type="button" className="btn btn-primary" onClick={this.updateChange} data-toggle="modal" data-target="#orderModal" data-show="false">Save</button>
                     </form>
                 </div>
             </div>

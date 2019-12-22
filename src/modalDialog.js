@@ -1,6 +1,17 @@
 import React from 'react';
 import Update from './update'
 class ModalDialog extends React.Component {
+  constructor(props) {
+    super(props);
+    this.updateList = this.updateList.bind(this);
+  }
+
+  updateList = (user) => {
+    if (typeof this.props.update === 'function') {
+      console.log("updateParent ModalDialog.js", user);
+      this.props.update(user);
+    }
+  }
 
   render() {
     const maxwidth = { "maxWidth": "80%" };
@@ -14,7 +25,7 @@ class ModalDialog extends React.Component {
                 <button type="button" className="close" data-dismiss="modal">&times;</button>
               </div>
               <div className="modal-body">
-                <Update user={this.props.user} update={this.props.update} />
+                <Update user={this.props.user} update={this.updateList} />
               </div>
               <div className="modal-footer">
                 <button type="button" className="btn btn-danger" data-dismiss="modal">Close</button>
