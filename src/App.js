@@ -1,4 +1,5 @@
 import React from "react";
+import { Redirect } from 'react-router';
 import {
   BrowserRouter as Router,
   Switch,
@@ -11,6 +12,7 @@ import OrderDetails from './orderdetails';
 import OrderDetailsList from './orderdetailslist';
 import AddOrder from './addorder';
 import Home from './home';
+import NotFound from './notfound';
 
 class App extends React.Component {
   constructor(props) {
@@ -26,7 +28,7 @@ class App extends React.Component {
   }
   render() {
     return (
-      <Router basename={process.env.PUBLIC_URL}>
+      <Router>
         <div className="container-fluid">
           <div className="row">
             <div className='col-xl-12'>
@@ -48,9 +50,11 @@ class App extends React.Component {
               <Switch>
                 {/* <Route exact path="/" component={Home} users={this.state.users} update={this.updateData} remove={this.removeData} /> */}
                 <Route exact path="/" render={props => <Home users={this.state.users} update={this.updateData} remove={this.removeData} />} />
-                <Route path="/olist" render={props => <OrderDetailsList users={this.state.users} update={this.updateData} remove={this.removeData} />} />
-                <Route path="/od" render={props => <OrderDetails users={this.state.users} update={this.updateData} remove={this.removeData} />} />
-                <Route path="/add" render={props => <AddOrder users={this.state.users} action={this.addData} />} />
+                <Route exact path="/olist" render={props => <OrderDetailsList users={this.state.users} update={this.updateData} remove={this.removeData} />} />
+                <Route exact path="/od" render={props => <OrderDetails users={this.state.users} update={this.updateData} remove={this.removeData} />} />
+                <Route exact path="/add" render={props => <AddOrder users={this.state.users} action={this.addData} />} />
+                <Route render={() => <Redirect to="/" />} />
+                {/* <Route exact path="*" component={NotFound} /> */}
               </Switch>
             </div>
           </div>

@@ -32,8 +32,7 @@ class OrderDetails extends React.Component {
                                             <p className="card-text"><span className="text-primary">Items: </span>{user.items}, <span className="text-primary">Price: </span><i className="fa fa-inr"></i> {user.price}, <span className="text-primary">Total: </span><i className="fa fa-inr"></i> {user.total}</p>
                                             <p className="card-text"><span className="text-primary">Email: </span>{user.email}</p>
                                             <p className="card-text"><span className="text-primary">Mobole: </span>{user.phone}</p>
-                                            <button onClick={(event) => this.removeData(user, event)} className="btn btn-link">Delete</button>
-                                            <button onClick={(event) => this.editData(user, event)} className="btn btn-link">Edit</button>
+                                            <button type="button" className="btn btn-danger" onClick={(event) => this.removeData(user, event)}>Delete</button> <button type="button" className="btn btn-primary" onClick={(event) => this.editData(user, event)}>Edit</button>
                                         </div>
                                     </div>
                                     </div>

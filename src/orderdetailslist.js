@@ -43,8 +43,8 @@ class OrderDetailsList extends React.Component {
                         <td className="">{user.items}</td>
                         <td className="">{user.price}</td>
                         <td className="">{user.total}</td>
-                        <td className=""><button onClick={(event) => this.removeData(user, event)} className="btn btn-link">Delete</button></td>
-                        <td className=""><button onClick={(event) => this.editData(user, event)} className="btn btn-link">Edit</button></td>
+                        <td className=""><button type="button" className="btn btn-danger" onClick={(event) => this.removeData(user, event)}>Delete</button></td>
+                        <td className=""><button type="button" className="btn btn-primary" onClick={(event) => this.editData(user, event)}>Edit</button></td>
                       </tr>
                     )
                 }
