@@ -25,7 +25,7 @@ class Home extends React.Component {
               <tbody>
                 <tr>
                   <th>No</th>
-                  <th>Order</th>
+                  <th>Order Name</th>
                   <th>Items</th>
                   <th>Cost</th>
                   <th>Total</th>

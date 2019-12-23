@@ -28,7 +28,7 @@ class App extends React.Component {
   }
   render() {
     return (
-      <Router>
+      <Router  basename={process.env.PUBLIC_URL}>
         <div className="container-fluid">
           <div className="row">
             <div className='col-xl-12'>
@@ -54,7 +54,6 @@ class App extends React.Component {
                 <Route exact path="/od" render={props => <OrderDetails users={this.state.users} update={this.updateData} remove={this.removeData} />} />
                 <Route exact path="/add" render={props => <AddOrder users={this.state.users} action={this.addData} />} />
                 <Route render={() => <Redirect to="/" />} />
-                {/* <Route exact path="*" component={NotFound} /> */}
               </Switch>
             </div>
           </div>
