@@ -27,6 +27,8 @@ class App extends React.Component {
     this.removeData = this.removeData.bind(this);
   }
   render() {
+    console.log("process.env.PUBLIC_URL", process.env.PUBLIC_URL);
+    const base = process.env.PUBLIC_URL;
     return (
       <Router  basename={process.env.PUBLIC_URL}>
         <div className="container-fluid">
@@ -48,12 +50,11 @@ class App extends React.Component {
           <div className="row  my-2">
             <div className="col-xl-12">
               <Switch>
-                {/* <Route exact path="/" component={Home} users={this.state.users} update={this.updateData} remove={this.removeData} /> */}
                 <Route exact path="/" render={props => <Home users={this.state.users} update={this.updateData} remove={this.removeData} />} />
                 <Route exact path="/olist" render={props => <OrderDetailsList users={this.state.users} update={this.updateData} remove={this.removeData} />} />
                 <Route exact path="/od" render={props => <OrderDetails users={this.state.users} update={this.updateData} remove={this.removeData} />} />
                 <Route exact path="/add" render={props => <AddOrder users={this.state.users} action={this.addData} />} />
-                <Route render={() => <Redirect to="/" />} />
+                <Route path="*" render={(base) => <Redirect to={base} />} />
               </Switch>
             </div>
           </div>
