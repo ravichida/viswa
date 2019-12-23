@@ -29,6 +29,7 @@ class App extends React.Component {
   render() {
     console.log("process.env.PUBLIC_URL", process.env.PUBLIC_URL);
     const base = process.env.PUBLIC_URL;
+    console.log("base Redirect", base);
     return (
       <Router  basename={process.env.PUBLIC_URL}>
         <div className="container-fluid">
@@ -54,7 +55,7 @@ class App extends React.Component {
                 <Route exact path="/olist" render={props => <OrderDetailsList users={this.state.users} update={this.updateData} remove={this.removeData} />} />
                 <Route exact path="/od" render={props => <OrderDetails users={this.state.users} update={this.updateData} remove={this.removeData} />} />
                 <Route exact path="/add" render={props => <AddOrder users={this.state.users} action={this.addData} />} />
-                <Route path="*" render={(base) => <Redirect to={base} />} />
+                <Route render={(base) => <Redirect to={base} />} />
               </Switch>
             </div>
           </div>
