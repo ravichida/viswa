@@ -12,6 +12,7 @@ import OrderDetails from './orderdetails';
 import OrderDetailsList from './orderdetailslist';
 import AddOrder from './addorder';
 import Home from './home';
+import Menu from './menu';
 import NotFound from './notfound';
 
 class App extends React.Component {
@@ -27,25 +28,20 @@ class App extends React.Component {
     this.removeData = this.removeData.bind(this);
   }
   render() {
-    console.log("process.env.PUBLIC_URL", process.env.PUBLIC_URL);
+    // console.log("process.env.PUBLIC_URL", process.env.PUBLIC_URL);
     const base = process.env.PUBLIC_URL;
-    console.log("base Redirect", base);
+    // console.log("base Redirect", base);
     return (
       <Router  basename={process.env.PUBLIC_URL}>
         <div className="container-fluid">
           <div className="row">
             <div className='col-xl-12'>
-              <h2>Viswa Order Details</h2>
+              <h2>Viswa Orders</h2>
             </div>
           </div>
           <div className="row">
             <div className="col-xl-12">
-              <ul className="nav nav-tabs">
-                <li className="nav-item"><Link to="/" className="nav-link">Home</Link></li>
-                <li className="nav-item"><Link to="/olist" className="nav-link">Orders</Link></li>
-                <li className="nav-item"><Link to="/od" className="nav-link">Order Details</Link></li>
-                <li className="nav-item"><Link to="/add" className="nav-link">Add Order</Link></li>
-              </ul>
+              <Menu />
             </div>
           </div>
           <div className="row  my-2">
@@ -82,21 +78,18 @@ class App extends React.Component {
     this.getUserData();
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    console.log("prevProps", prevProps);
-    // check on previous state
-    // only write when it's different with the new state
+  componentDidUpdate(prevState) {
     console.log("componentDidUpdate", prevState, this.state);
-    if (prevState !== this.state) {
+    // only write when it's different with the new state
+    if (prevState.users !== this.state.users) {
       this.writeUserData();
-      console.log("componentDidUpdate");
+      console.log("componentDidUpdate, writeUserData");
     }
   }
 
   addData = user => {
     // console.log("Add Data");
     if (user) {
-      // console.log(user);
       const { users } = this.state;
       users.push(user)
       this.setState({ users });
@@ -151,7 +144,7 @@ class App extends React.Component {
         users[devIndex].total = total;
         this.setState({ users: users });
       }
-    console.log("Updateed State in app.js", this.state.users);
+    console.log("Updateed State appjs", this.state.users);
   }
 }
 }

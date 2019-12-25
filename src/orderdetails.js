@@ -21,8 +21,8 @@ class OrderDetails extends React.Component {
                         {
                             this.props.users
                                 .map(user =>
-                                    <div className="d-inline-flex flex-row" style={{ margin: '0.5rem', maxWidth: "450px" }}>
-                                    <div key={user.uid} className="card">
+                                    <div key={user.uid} className="d-inline-flex flex-row" style={{ margin: '0.5rem', maxWidth: "450px" }}>
+                                    <div className="card">
                                         <div className="card-body">
                                             <h5 className="card-title"><span className="text-primary">Name: </span> {user.name}</h5>
                                             <h5 className="card-title"><span className="text-primary">First Name: </span> {user.fname}, <span className="text-primary">Last Name: </span> {user.lname}</h5>
