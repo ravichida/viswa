@@ -12,6 +12,7 @@ class OrderDetails extends React.Component {
             user: {}
         }
     }
+
     render() {
         return (
             <div>
@@ -21,20 +22,39 @@ class OrderDetails extends React.Component {
                         {
                             this.props.users
                                 .map(user =>
-                                    <div key={user.uid} className="d-inline-flex flex-row" style={{ margin: '0.5rem', maxWidth: "450px" }}>
-                                    <div className="card">
-                                        <div className="card-body">
-                                            <h5 className="card-title"><span className="text-primary">Name: </span> {user.name}</h5>
-                                            <h5 className="card-title"><span className="text-primary">First Name: </span> {user.fname}, <span className="text-primary">Last Name: </span> {user.lname}</h5>
-                                            <p className="card-text"><span className="text-primary">Order No: </span> {user.orderno}</p>
-                                            {/* <p className="card-text"><span className="text-primary">Order: </span> { " " + user.order + " # " + user.items + " Nos" }</p> */}
-                                            <p className="card-text"><span className="text-primary">Order: </span> {user.order}</p>
-                                            <p className="card-text"><span className="text-primary">Items: </span>{user.items}, <span className="text-primary">Price: </span><i className="fa fa-inr"></i> {user.price}, <span className="text-primary">Total: </span><i className="fa fa-inr"></i> {user.total}</p>
-                                            <p className="card-text"><span className="text-primary">Email: </span>{user.email}</p>
-                                            <p className="card-text"><span className="text-primary">Mobole: </span>{user.phone}</p>
-                                            <button type="button" className="btn btn-danger" onClick={(event) => this.removeData(user, event)}>Delete</button> <button type="button" className="btn btn-primary" onClick={(event) => this.editData(user, event)}>Edit</button>
+                                    <div key={user.uid} className="d-inline-flex flex-row"
+                                        style={{ margin: '0.5rem', maxWidth: "450px" }}>
+                                        <div className="card-deck pt-1 mb3">
+                                            <div className="card text-dark d-flex align-items-stretch">
+                                                <div className="card-body text-primary">
+                                                    <h5 className="card-title"><span
+                                                        className="">Name: </span> {user.name}</h5>
+                                                    <h5 className="card-title"><span className="">First Name: </span> {user.fname}, <span
+                                                        className="">Last Name: </span> {user.lname}</h5>
+                                                    <p className="card-text"><span
+                                                        className="">Order No: </span> {user.orderno}</p>
+                                                    {/* <p className="card-text"><span className="text-white">Order: </span> { " " + user.order + " # " + user.items + " Nos" }</p> */}
+                                                    <p className="card-text"><span
+                                                        className="">Order: </span> {user.order}</p>
+                                                    <p className="card-text"><span
+                                                        className="">Items: </span>{user.items}, <span
+                                                            className="">Price: </span><i
+                                                                className="fa fa-inr"></i> {user.price}, <span
+                                                                    className="">Total: </span><i
+                                                                        className="fa fa-inr"></i> {user.total}</p>
+                                                    <p className="card-text"><span
+                                                        className="">Email: </span>{user.email}</p>
+                                                    <p className="card-text"><span
+                                                        className="">Mobole: </span>{user.phone}</p>
+                                                    <button type="button" className="btn btn-danger"
+                                                        onClick={(event) => this.removeData(user, event)}>Delete
+                                                    </button>
+                                                    <button type="button" className="btn btn-primary ml-3"
+                                                        onClick={(event) => this.editData(user, event)}>Edit
+                                                    </button>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
                                     </div>
                                 )
                         }

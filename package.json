@@ -13,7 +13,7 @@
     "react-scripts": "^3.3.0",
     "redux": "^4.0.4"
   },
-  "homepage": "https://ravichida.github.io/viswa",
+  "homepage": "https://ravichida.github.io/ionic/viswa",
   "scripts": {
     "start": "react-scripts start",
     "predeploy": "yarn run build",

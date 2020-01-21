@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.js": "/viswa/static/js/main.d64dd096.chunk.js",
-    "main.js.map": "/viswa/static/js/main.d64dd096.chunk.js.map",
-    "runtime-main.js": "/viswa/static/js/runtime-main.904a16ae.js",
-    "runtime-main.js.map": "/viswa/static/js/runtime-main.904a16ae.js.map",
-    "static/css/2.64a99b10.chunk.css": "/viswa/static/css/2.64a99b10.chunk.css",
-    "static/js/2.34bf241e.chunk.js": "/viswa/static/js/2.34bf241e.chunk.js",
-    "static/js/2.34bf241e.chunk.js.map": "/viswa/static/js/2.34bf241e.chunk.js.map",
-    "index.html": "/viswa/index.html",
-    "precache-manifest.05707c4c28cf29ac64a906a682140b0a.js": "/viswa/precache-manifest.05707c4c28cf29ac64a906a682140b0a.js",
-    "service-worker.js": "/viswa/service-worker.js",
-    "static/css/2.64a99b10.chunk.css.map": "/viswa/static/css/2.64a99b10.chunk.css.map",
-    "static/js/2.34bf241e.chunk.js.LICENSE": "/viswa/static/js/2.34bf241e.chunk.js.LICENSE"
+    "main.js": "/ionic/viswa/static/js/main.e1251feb.chunk.js",
+    "main.js.map": "/ionic/viswa/static/js/main.e1251feb.chunk.js.map",
+    "runtime-main.js": "/ionic/viswa/static/js/runtime-main.7c29b833.js",
+    "runtime-main.js.map": "/ionic/viswa/static/js/runtime-main.7c29b833.js.map",
+    "static/css/2.64a99b10.chunk.css": "/ionic/viswa/static/css/2.64a99b10.chunk.css",
+    "static/js/2.bc10dda8.chunk.js": "/ionic/viswa/static/js/2.bc10dda8.chunk.js",
+    "static/js/2.bc10dda8.chunk.js.map": "/ionic/viswa/static/js/2.bc10dda8.chunk.js.map",
+    "index.html": "/ionic/viswa/index.html",
+    "precache-manifest.1f95cbf29f38fbce620685adbddc8401.js": "/ionic/viswa/precache-manifest.1f95cbf29f38fbce620685adbddc8401.js",
+    "service-worker.js": "/ionic/viswa/service-worker.js",
+    "static/css/2.64a99b10.chunk.css.map": "/ionic/viswa/static/css/2.64a99b10.chunk.css.map",
+    "static/js/2.bc10dda8.chunk.js.LICENSE": "/ionic/viswa/static/js/2.bc10dda8.chunk.js.LICENSE"
   },
   "entrypoints": [
-    "static/js/runtime-main.904a16ae.js",
+    "static/js/runtime-main.7c29b833.js",
     "static/css/2.64a99b10.chunk.css",
-    "static/js/2.34bf241e.chunk.js",
-    "static/js/main.d64dd096.chunk.js"
+    "static/js/2.bc10dda8.chunk.js",
+    "static/js/main.e1251feb.chunk.js"
   ]
 }
