@@ -24,21 +24,21 @@ class Home extends React.Component {
             <table className="table table-striped">
               <tbody>
                 <tr>
-                  <th>No</th>
                   <th>Order Name</th>
                   <th>Items</th>
                   <th>Cost</th>
                   <th>Total</th>
+                  <th>Call</th>
                 </tr>
                 {
                   this.props.users
                     .map(user =>
                       <tr key={user.uid} style={{}}>
-                        <td className="">{user.orderno}</td>
                         <td className="">{user.order}</td>
                         <td className="">{user.items}</td>
                         <td className="">{user.price}</td>
                         <td className="">{user.total}</td>
+                        <td className=""><a href="tel:9848732211" className="btn btn-info" role="button"><i className="fas fa-phone-volume"></i></a></td>
                       </tr>
                     )
                 }

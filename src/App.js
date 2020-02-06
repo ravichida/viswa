@@ -72,6 +72,7 @@ class App extends React.Component {
       this.setState(state);
     });
     console.log('DATA RETRIEVED');
+    console.log('DATA RETRIEVED Users', this.state.users);
   }
 
   componentDidMount() {
@@ -88,7 +89,7 @@ class App extends React.Component {
   }
 
   addData = user => {
-    // console.log("Add Data");
+    // console.log("This State Data", this.state.users);
     if (user) {
       const { users } = this.state;
       users.push(user)

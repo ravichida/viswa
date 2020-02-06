@@ -24,9 +24,9 @@ class OrderDetailsList extends React.Component {
             <table className="table table-striped">
               <tbody>
                 <tr>
-                  <th width="7%">Order No</th>
-                  <th width="20%">Order</th>
-                  <th width="20%">Name</th>
+                  <th width="7%">Order</th>
+                  <th width="20%">Order Name</th>
+                  <th width="20%">Customer Name</th>
                   <th>Items</th>
                   <th>Cost</th>
                   <th>Total</th>
