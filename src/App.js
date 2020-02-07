@@ -92,6 +92,7 @@ class App extends React.Component {
     // console.log("This State Data", this.state.users);
     if (user) {
       const { users } = this.state;
+      console.log('users Data', users);
       users.push(user)
       this.setState({ users });
     }

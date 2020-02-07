@@ -16,10 +16,10 @@ class AddOrder extends React.Component{
             <form>
                 <div className="form-row">
                 <input type='hidden' ref='uid' />
-                <div className="form-group col-md-6">
+                {/* <div className="form-group col-md-6">
                     <label>Oder No</label>
                     <input type="text" ref='orderno' className="form-control" placeholder="Oder No" />
-                </div>
+                </div> */}
                 <div className="form-group col-md-6">
                     <label>Oder Name</label>
                     <input type="text" ref='order' className="form-control" placeholder="Oder Name" />
@@ -37,12 +37,8 @@ class AddOrder extends React.Component{
                     <input type="text" ref='total' className="form-control" placeholder="Total Cost" />
                 </div>
                 <div className="form-group col-md-6">
-                    <label>First Name</label>
-                    <input type="text" ref='fname' className="form-control" placeholder="First Name" />
-                </div>
-                <div className="form-group col-md-6">
-                    <label>Last Name</label>
-                    <input type="text" ref='lname' className="form-control" placeholder="Last Name" />
+                    <label>Name</label>
+                    <input type="text" ref='name' className="form-control" placeholder="Name" />
                 </div>
                 <div className="form-group col-md-6">
                     <label>Email</label>
@@ -64,15 +60,12 @@ class AddOrder extends React.Component{
     addUser = (event) => {
         console.log("Added form details");
         event.preventDefault();
-        let fname = this.refs.fname.value;
-        let lname = this.refs.lname.value;
+        let name = this.refs.name.value;
         let email = this.refs.email.value;
         let phone = this.refs.phone.value;
         let order = this.refs.order.value;
-        let orderno = this.refs.orderno.value;
         let items = this.refs.items.value;
         let price = this.refs.price.value;
-        let name = fname + " " + lname;
         let total = ( parseInt(items) * parseInt(price)).toLocaleString('en-IN');
         let uid = this.refs.uid.value;
         const condition = (fname && lname && name && email && phone && order && orderno && items && price && total);
@@ -81,13 +74,10 @@ class AddOrder extends React.Component{
           const devIndex = users.findIndex(data => {
             return data.uid === uid 
           });
-          users[devIndex].fname = fname;
-          users[devIndex].lname = lname;
           users[devIndex].name = name;
           users[devIndex].email = email;
           users[devIndex].phone = phone;
           users[devIndex].order = order;
-          users[devIndex].orderno = orderno;
           users[devIndex].items = items;
           users[devIndex].price = price;
           users[devIndex].total = total;
@@ -113,12 +103,10 @@ class AddOrder extends React.Component{
         }
       
         this.refs.uid.value = '';
-        this.refs.fname.value = '';
-        this.refs.lname.value = '';
+        this.refs.name.value = '';
         this.refs.email.value = '';
         this.refs.phone.value = '';
         this.refs.order.value = '';
-        this.refs.orderno.value = '';
         this.refs.items.value = '';
         this.refs.price.value = '';
         this.refs.total.value = '';
