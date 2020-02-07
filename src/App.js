@@ -69,10 +69,11 @@ class App extends React.Component {
     let ref = Firebase.database().ref('/');
     ref.on('value', snapshot => {
       const state = snapshot.val();
-      this.setState(state);
+      this.setState(state, function(){
+        console.log('DATA RETRIEVED Users', this.state.users);
+      });
     });
     console.log('DATA RETRIEVED');
-    console.log('DATA RETRIEVED Users', this.state.users);
   }
 
   componentDidMount() {

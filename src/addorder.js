@@ -21,7 +21,7 @@ class AddOrder extends React.Component{
                     <input type="text" ref='orderno' className="form-control" placeholder="Oder No" />
                 </div> */}
                 <div className="form-group col-md-6">
-                    <label>Oder Name</label>
+                    <label>Order Name</label>
                     <input type="text" ref='order' className="form-control" placeholder="Oder Name" />
                 </div>
                 <div className="form-group col-md-6">
@@ -48,6 +48,10 @@ class AddOrder extends React.Component{
                     <label>Mobile / Phone No</label>
                     <input type="number" ref='phone' className="form-control" placeholder="Mobile / Phone No" />
                 </div>
+                <div className="form-group col-md-6">
+                    <label>Date</label>
+                    <input type="number" ref='phone' className="form-control" placeholder="Date format 'MM/DD/YYYY'" />
+                </div>
                 </div>
                 <button type="button" className="btn btn-primary" onClick={ this.addUser }>Save</button>
             </form>
@@ -68,7 +72,8 @@ class AddOrder extends React.Component{
         let price = this.refs.price.value;
         let total = ( parseInt(items) * parseInt(price)).toLocaleString('en-IN');
         let uid = this.refs.uid.value;
-        const condition = (fname && lname && name && email && phone && order && orderno && items && price && total);
+        let oddt = new Date("03/25/2015");
+        const condition = (name && email && phone && order && items && price && total);
         if (uid && condition){
           const { users } = this.state;
           const devIndex = users.findIndex(data => {
@@ -81,22 +86,22 @@ class AddOrder extends React.Component{
           users[devIndex].items = items;
           users[devIndex].price = price;
           users[devIndex].total = total;
+          users[devIndex].oddt = oddt;
           this.setState({ users });
         }
         else if (condition) {
             const uid = new Date().getTime().toString();
             const user = {
                 "email": email,
-                "fname": fname,
+                "name": name,
                 "items": items,
-                "lname": lname,
                 "name": name,
                 "order": order,
-                "orderno": orderno,
                 "phone": phone,
                 "price": price,
                 "total": total,
-                "uid": uid
+                "uid": uid,
+                "oddt": oddt
                 }
             this.props.action(user);
             console.log(user);
@@ -110,6 +115,7 @@ class AddOrder extends React.Component{
         this.refs.items.value = '';
         this.refs.price.value = '';
         this.refs.total.value = '';
+        this.refs.oddt.value = '';
       }
 
       add  = ()=>{ // remove this sample child function to add order
@@ -124,6 +130,7 @@ class AddOrder extends React.Component{
             "phone": "8123456789",
             "price": "50",
             "total": "10,000",
+            "oddt": "03/10/08",
             "uid": "1675303448945"
           }
         this.props.action(user1);
