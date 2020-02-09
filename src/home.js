@@ -1,4 +1,4 @@
-import React from 'react';
+  import React from 'react';
 import $ from 'jquery';
 import ModalDialog from './modalDialog'
 class Home extends React.Component {
@@ -21,7 +21,16 @@ class Home extends React.Component {
         <div className='row'>
           <div className='col-xl-12'>
             <h4 className='my-3'>Orders List</h4>
-            <table className="table table-striped">
+            {this.props.users.map(user => 
+            <div class="row">
+              <div class="col-md"><strong>Order Name</strong>: 1 Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
+              <div class="col-md"><strong>Items</strong>: 2 Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
+              <div class="col-md"><strong>Cost</strong>: 3 Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
+              <div class="col-md"><strong>Total</strong>: 4 Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
+              <div class="col-md"><strong>Call</strong>: 5 Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
+            </div>
+            )}
+            {/* <table className="table table-striped">
               <tbody>
                 <tr>
                   <th>Order Name</th>
@@ -38,12 +47,12 @@ class Home extends React.Component {
                         <td className="">{user.items}</td>
                         <td className="">{user.price}</td>
                         <td className="">{user.total}</td>
-                        <td className=""><a href={"tele:"+user.phone} className="btn btn-info" role="button"><i class="fas fa-phone-alt"> </i></a></td>
+                        <td className=""><a href={"tele:"+user.phone} className="btn btn-info" role="button"><i className="fas fa-phone-alt"> </i></a></td>
                       </tr>
                     )
                 }
               </tbody>
-            </table>
+            </table> */}
           </div>
         </div>
         <div className='row'>

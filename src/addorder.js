@@ -37,10 +37,12 @@ class AddOrder extends React.Component{
                 <div className="form-group col-md-6">
                     <label>Order Name</label>
                     <input type="text" ref='order' className="form-control" placeholder="Oder Name" />
+                    <div className="danger"></div>
                 </div>
                 <div className="form-group col-md-6">
                     <label>Number of Items</label>
                     <input type="number" ref='items' className="form-control" placeholder="Number of Items" />
+                    <div className="danger"></div>
                 </div>
                 <div className="form-group col-md-6">
                     <label>Item Price</label>
