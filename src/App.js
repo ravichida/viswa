@@ -27,6 +27,7 @@ class App extends React.Component {
     this.updateData = this.updateData.bind(this);
     this.removeData = this.removeData.bind(this);
   }
+
   render() {
     // console.log("process.env.PUBLIC_URL", process.env.PUBLIC_URL);
     const base = process.env.PUBLIC_URL;
@@ -51,6 +52,7 @@ class App extends React.Component {
                 <Route exact path="/olist" render={props => <OrderDetailsList users={this.state.users} update={this.updateData} remove={this.removeData} />} />
                 <Route exact path="/od" render={props => <OrderDetails users={this.state.users} update={this.updateData} remove={this.removeData} />} />
                 <Route exact path="/add" render={props => <AddOrder users={this.state.users} action={this.addData} />} />
+                {/* <Route exact path="/login" render={props => <Login users={this.state.users} />} /> */}
                 <Route render={(base) => <Redirect to={base} />} />
               </Switch>
             </div>
@@ -151,5 +153,12 @@ class App extends React.Component {
   }
 }
 }
+/* 
+class Login extends React.Component {
+  render() {
+    return (<h1>Hello, {this.props.name}</h1>);
+  }
+}
 
+export default Login; */
 export default App;

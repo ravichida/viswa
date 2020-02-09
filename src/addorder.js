@@ -1,4 +1,8 @@
 import React from 'react';
+import DatePicker from "react-datepicker";
+
+import "../node_modules/react-datepicker/dist/react-datepicker.css"
+
 
 class AddOrder extends React.Component{
     constructor(props){
@@ -7,6 +11,16 @@ class AddOrder extends React.Component{
             users: [],
           };
     }
+
+    state = {
+        startDate: new Date()
+      };
+
+    handleChange = date => {
+        this.setState({
+          startDate: date
+        });
+      };
     
     render() {
       return (
@@ -46,11 +60,12 @@ class AddOrder extends React.Component{
                 </div>
                 <div className="form-group col-md-6">
                     <label>Mobile / Phone No</label>
-                    <input type="number" ref='phone' className="form-control" placeholder="Mobile / Phone No" />
+                    <input type="number"  max={999999999999} ref='phone' className="form-control" placeholder="Mobile / Phone No" />
                 </div>
                 <div className="form-group col-md-6">
-                    <label>Date</label>
-                    <input type="number" ref='phone' className="form-control" placeholder="Date format 'MM/DD/YYYY'" />
+                    <h6>Date</h6>
+                    <DatePicker selected={this.state.startDate} onChange={this.handleChange} ref="oDate" />
+                    {/* <input type="number" ref='phone' className="form-control" placeholder="Date format 'MM/DD/YYYY'" /> */}
                 </div>
                 </div>
                 <button type="button" className="btn btn-primary" onClick={ this.addUser }>Save</button>
@@ -72,7 +87,7 @@ class AddOrder extends React.Component{
         let price = this.refs.price.value;
         let total = ( parseInt(items) * parseInt(price)).toLocaleString('en-IN');
         let uid = this.refs.uid.value;
-        let oddt = new Date("03/25/2015");
+        let oDate = new Date("03/25/2015");
         const condition = (name && email && phone && order && items && price && total);
         if (uid && condition){
           const { users } = this.state;
@@ -86,7 +101,7 @@ class AddOrder extends React.Component{
           users[devIndex].items = items;
           users[devIndex].price = price;
           users[devIndex].total = total;
-          users[devIndex].oddt = oddt;
+          users[devIndex].oDate = oDate;
           this.setState({ users });
         }
         else if (condition) {
@@ -101,7 +116,7 @@ class AddOrder extends React.Component{
                 "price": price,
                 "total": total,
                 "uid": uid,
-                "oddt": oddt
+                "oDate": oDate
                 }
             this.props.action(user);
             console.log(user);
@@ -115,7 +130,7 @@ class AddOrder extends React.Component{
         this.refs.items.value = '';
         this.refs.price.value = '';
         this.refs.total.value = '';
-        this.refs.oddt.value = '';
+        this.refs.oDate.value = '';
       }
 
       add  = ()=>{ // remove this sample child function to add order
@@ -130,7 +145,7 @@ class AddOrder extends React.Component{
             "phone": "8123456789",
             "price": "50",
             "total": "10,000",
-            "oddt": "03/10/08",
+            "oDate": "03/10/08",
             "uid": "1675303448945"
           }
         this.props.action(user1);

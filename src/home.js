@@ -33,12 +33,12 @@ class Home extends React.Component {
                 {
                   this.props.users
                     .map(user =>
-                      <tr key={user.uid} style={{}}>
+                      <tr key={user.uid} style={{}}>{}
                         <td className="">{user.order}</td>
                         <td className="">{user.items}</td>
                         <td className="">{user.price}</td>
                         <td className="">{user.total}</td>
-                        <td className=""><a href="tel:9848732211" className="btn btn-info" role="button"><i className="fas fa-phone-volume"></i></a></td>
+                        <td className=""><a href={"tele:"+user.phone} className="btn btn-info" role="button"><i class="fas fa-phone-alt"> </i></a></td>
                       </tr>
                     )
                 }
