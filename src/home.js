@@ -22,38 +22,15 @@ class Home extends React.Component {
           <div className='col-xl-12'>
             <h4 className='my-3'>Orders List</h4>
             {this.props.users.map(user => 
-            <div class="row">
-              <div class="col-md"><strong>Order Name</strong>: 1 Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
-              <div class="col-md"><strong>Items</strong>: 2 Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
-              <div class="col-md"><strong>Cost</strong>: 3 Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
-              <div class="col-md"><strong>Total</strong>: 4 Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
-              <div class="col-md"><strong>Call</strong>: 5 Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
+            <div className="row bg-success">
+              <div className="mt-2 col-md-4"><strong>Order Name</strong>: {user.order}.</div>
+              <div className="mt-2 col-md-2"><strong>Items</strong>: {user.items}.</div>
+              <div className="mt-2 col-md-2"><strong>Cost</strong>: {user.price}.</div>
+              <div className="mt-2 col-md-2"><strong>Total</strong>: {user.total}.</div>
+              <div className="mt-2 mb-4 col-md-2"><strong>Call</strong>: <a href={"tele:"+user.phone} className="btn btn-info" role="button"><i className="fas fa-phone-alt"> </i></a></div>
             </div>
             )}
-            {/* <table className="table table-striped">
-              <tbody>
-                <tr>
-                  <th>Order Name</th>
-                  <th>Items</th>
-                  <th>Cost</th>
-                  <th>Total</th>
-                  <th>Call</th>
-                </tr>
-                {
-                  this.props.users
-                    .map(user =>
-                      <tr key={user.uid} style={{}}>{}
-                        <td className="">{user.order}</td>
-                        <td className="">{user.items}</td>
-                        <td className="">{user.price}</td>
-                        <td className="">{user.total}</td>
-                        <td className=""><a href={"tele:"+user.phone} className="btn btn-info" role="button"><i className="fas fa-phone-alt"> </i></a></td>
-                      </tr>
-                    )
-                }
-              </tbody>
-            </table> */}
-          </div>
+            </div>
         </div>
         <div className='row'>
           <div className='col-xl-12'>

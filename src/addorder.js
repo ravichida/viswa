@@ -89,7 +89,7 @@ class AddOrder extends React.Component{
         let price = this.refs.price.value;
         let total = ( parseInt(items) * parseInt(price)).toLocaleString('en-IN');
         let uid = this.refs.uid.value;
-        let oDate = new Date("03/25/2015");
+        let oDate = this.state.startDate;
         const condition = (name && email && phone && order && items && price && total);
         if (uid && condition){
           const { users } = this.state;
