@@ -8,7 +8,7 @@ class OrderDetailsList extends React.Component {
     this.updateApp = this.updateApp.bind(this);
     this.removeData = this.removeData.bind(this);
     this.state = {
-      user: {}
+      user: {write:true}
     }
   }
   render() {

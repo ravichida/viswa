@@ -1,14 +1,15 @@
   import React from 'react';
 import $ from 'jquery';
 import ModalDialog from './modalDialog'
+import ModalDialogReadOnly from './modalDialogReadOnly';
 class Home extends React.Component {
   constructor(props) {
     super(props);
-    this.editData = this.editData.bind(this);
+    this.displayData = this.displayData.bind(this);
     this.updateApp = this.updateApp.bind(this);
     this.removeData = this.removeData.bind(this);
     this.state = {
-      user: {}
+      user: {write:true}
     }
   }
   render() {
@@ -23,7 +24,7 @@ class Home extends React.Component {
             <h4 className='my-3'>Orders List</h4>
             {this.props.users.map(user => 
             <div className="row bg-success">
-              <div className="mt-2 col-md-4"><strong>Order Name</strong>: {user.order}.</div>
+              <div className="mt-2 col-md-4"><strong>Order Name</strong>: <a href="#" onClick={(event) => this.displayData(user, event)} className="btn btn-info" role="button">{user.order}.</a></div>
               <div className="mt-2 col-md-2"><strong>Items</strong>: {user.items}.</div>
               <div className="mt-2 col-md-2"><strong>Cost</strong>: {user.price}.</div>
               <div className="mt-2 col-md-2"><strong>Total</strong>: {user.total}.</div>
@@ -34,7 +35,7 @@ class Home extends React.Component {
         </div>
         <div className='row'>
           <div className='col-xl-12'>
-            <ModalDialog user={this.state.user} update={this.updateApp} />
+            <ModalDialogReadOnly user={this.state.user} update={this.updateApp} />
             <div>
             </div>
           </div>
@@ -59,7 +60,7 @@ class Home extends React.Component {
     }
   }
 
-  editData(user, e) {
+  displayData(user, e) {
     e.preventDefault();
     $("#orderModal").modal({ show: true });
     this.setState({

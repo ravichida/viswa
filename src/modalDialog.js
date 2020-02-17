@@ -25,7 +25,7 @@ class ModalDialog extends React.Component {
                 <button type="button" className="close" data-dismiss="modal">&times;</button>
               </div>
               <div className="modal-body">
-                <Update user={this.props.user} update={this.updateList} />
+                  <Update user={this.props.user} readonly="false" update={this.updateList} />
               </div>
               <div className="modal-footer">
                 <button type="button" className="btn btn-danger" data-dismiss="modal">Close</button>

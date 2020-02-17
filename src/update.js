@@ -3,6 +3,7 @@ import React from 'react';
 class Update extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {readonly: true};
         this.updateChange = this.updateChange.bind(this);
         this.updateField = this.updateField.bind(this);
         this.uid = React.createRef();
@@ -55,8 +56,17 @@ class Update extends React.Component {
             this.props.update(user);
         }
     }
+    updateBtn = (event) => {
+        event.preventDefault();
+        this.setState({
+            showUpdateBtn : !this.state.showUpdateBtn,
+            readonly : "readonly"
+            });
+    }
 
     render() {
+        console.log("updatejs", this.props.user);
+        // readOnly={this.props.user}
         return (
             <div className='row'>
                 <div className='col-xl-12'>
@@ -109,3 +119,7 @@ class Update extends React.Component {
     }
 }
 export default Update;
+
+function UpdateBtn(props) {
+    return <button type="button" className="btn btn-primary">Save</button>
+  }
