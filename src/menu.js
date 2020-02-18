@@ -32,7 +32,7 @@ class Menu extends React.Component {
                             <Link
                                 key={link.id}
                                 to={link.path}
-                                className={this.state.activeId === link.id ? "nav-link nav-item btn-success  active" : "nav-link nav-item btn-success navmr"}
+                                className={this.state.activeId === link.id ? "nav-link nav-item btn-success menublock active" : "nav-link nav-item btn-success menublock"}
                                 onClick={(event) => this.handleClick(event, link.id)}
                             >
                                 {link.name}

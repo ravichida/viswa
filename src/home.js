@@ -23,7 +23,7 @@ class Home extends React.Component {
           <div className='col-xl-12'>
             <h4 className='my-3'>Orders List</h4>
             {this.props.users.map(user => 
-            <div className="row bg-success rounded">
+            <div className="row bg-success rowblock rounded">
               <div className="mt-2 col-md-4"><strong>Order Name</strong>: <a href="#" onClick={(event) => this.displayData(user, event)} className="btn btn-info" role="button">{user.order}.</a></div>
               <div className="mt-2 col-md-2"><strong>Items</strong>: {user.items}.</div>
               <div className="mt-2 col-md-2"><strong>Cost</strong>: {user.price}.</div>
