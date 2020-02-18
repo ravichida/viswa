@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "eb66b954f82c765feba9493f620e96af",
+    "revision": "ef16cd6db3fca3b997fa691784c09774",
     "url": "/viswa/index.html"
   },
   {
