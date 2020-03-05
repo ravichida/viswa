@@ -21,7 +21,7 @@ class OrderDetailsList extends React.Component {
         <div className='row'>
           <div className='col-xl-12'>
             <h4 className='my-3'>Order Details List</h4>
-            <table className="table table-striped">
+            <table className="table table-striped olistTable">
               <tbody>
                 <tr>
                   <th width="7%">Order</th>
