@@ -16,6 +16,7 @@ class Update extends React.Component {
         this.items = React.createRef();
         this.price = React.createRef();
         this.total = React.createRef();
+
         this.state = {
             user: {
                 uid: '',
@@ -30,7 +31,11 @@ class Update extends React.Component {
                 total: ''
             }
         }
+        
     }
+
+    
+
     componentWillReceiveProps(nextProps) {
         if (this.props.user !== nextProps.user) {
             this.setState({ user: nextProps.user })
@@ -92,7 +97,7 @@ class Update extends React.Component {
                             </div>
                             <div className="form-group col-md-6">
                                 <label>Total</label>
-                                <input type="text" ref={this.total} value={this.state.user.total || ''} onChange={(e) => this.updateField("total", e)} className="form-control" placeholder="Total Cost" />
+                                <input type="text" ref={this.total} value={this.state.user.items * this.state.user.price || ''} onChange={(e) => this.updateField("total", e)} className="form-control" placeholder="Total Cost" />
                             </div>
                             <div className="form-group col-md-6">
                                 <label>First Name</label>

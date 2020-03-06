@@ -60,7 +60,7 @@ class Update extends React.Component {
         return (
             <div className='row'>
                 <div className='col-xl-12'>
-                    <h4 className='my-3'>Update Order</h4>
+                    <h4 className='my-3'>Read Order</h4>
                     <form>
                         <div className="form-row">
                             <input type='hidden' ref={this.uid} value={this.state.user.uid || ''} />
