@@ -1,9 +1,12 @@
 import React from 'react';
+import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
 
 class Update extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {readonly: true};
+        this.state = { readonly: true };
         this.updateChange = this.updateChange.bind(this);
         this.updateField = this.updateField.bind(this);
         this.uid = React.createRef();
@@ -26,15 +29,25 @@ class Update extends React.Component {
                 phone: '',
                 order: '',
                 orderno: '',
-                items: '',
-                price: '',
-                total: ''
+                items: 0,
+                price: 0,
+                total: 0
             }
         }
-        
+
     }
 
+    state = {
+        startDate: new Date()
+      };
     
+      handleChange = date => {
+        this.setState({
+          startDate: date
+        });
+      };
+
+
 
     componentWillReceiveProps(nextProps) {
         if (this.props.user !== nextProps.user) {
@@ -53,29 +66,29 @@ class Update extends React.Component {
     }
 
     updateChange = (event) => {
-        event.preventDefault();
+        /* event.preventDefault();
         if (typeof this.props.update === 'function') {
             let user = {};
             user = { ...this.state.user, name: this.state.user.fname + " " + this.state.user.lname };
-            console.log("User details @ update.js", user);
+            console.log("update Change @ update.js", user);
             this.props.update(user);
-        }
+
+        } */
     }
     updateBtn = (event) => {
         event.preventDefault();
         this.setState({
-            showUpdateBtn : !this.state.showUpdateBtn,
-            readonly : "readonly"
-            });
+            showUpdateBtn: !this.state.showUpdateBtn,
+            readonly: "readonly"
+        });
     }
 
     render() {
-        console.log("updatejs", this.props.user);
+        // console.log("updatejs", this.props.user);
         // readOnly={this.props.user}
         return (
             <div className='row'>
                 <div className='col-xl-12'>
-                    <h4 className='my-3'>Update Order</h4>
                     <form>
                         <div className="form-row">
                             <input type='hidden' ref={this.uid} value={this.state.user.uid || ''} />
@@ -96,16 +109,8 @@ class Update extends React.Component {
                                 <input type="number" ref={this.price} value={this.state.user.price || ''} onChange={(e) => this.updateField("price", e)} className="form-control" placeholder="Item Cost" />
                             </div>
                             <div className="form-group col-md-6">
-                                <label>Total</label>
-                                <input type="text" ref={this.total} value={this.state.user.items * this.state.user.price || ''} onChange={(e) => this.updateField("total", e)} className="form-control" placeholder="Total Cost" />
-                            </div>
-                            <div className="form-group col-md-6">
-                                <label>First Name</label>
-                                <input type="text" ref={this.fname} value={this.state.user.fname || ''} onChange={(e) => this.updateField("fname", e)} className="form-control" placeholder="First Name" />
-                            </div>
-                            <div className="form-group col-md-6">
-                                <label>Last Name</label>
-                                <input type="text" ref={this.lname} value={this.state.user.lname || ''} onChange={(e) => this.updateField("lname", e)} className="form-control" placeholder="Last Name" />
+                                <label>Name</label>
+                                <input type="text" ref={this.name} value={this.state.user.name || ''} onChange={(e) => this.updateField("name", e)} className="form-control" placeholder="Name" />
                             </div>
                             <div className="form-group col-md-6">
                                 <label>Email</label>
@@ -114,6 +119,11 @@ class Update extends React.Component {
                             <div className="form-group col-md-6">
                                 <label>Mobile / Phone No</label>
                                 <input type="number" ref={this.phone} value={this.state.user.phone || ''} onChange={(e) => this.updateField("phone", e)} className="form-control" placeholder="Mobile / Phone No" />
+                            </div>
+                            <div className="form-group col-md-6">
+                                <label>Date</label>
+                                <DatePicker selected={this.state.startDate} ref='oDate' onChange={this.handleChange} />
+                                {/* <input type="text" ref='date' className="form-control" placeholder="MM/DD/YYYY" /> */}
                             </div>
                         </div>
                         <button type="button" className="btn btn-primary" onClick={this.updateChange} data-toggle="modal" data-target="#orderModal" data-show="false">Save</button>
@@ -127,4 +137,4 @@ export default Update;
 
 function UpdateBtn(props) {
     return <button type="button" className="btn btn-primary">Save</button>
-  }
+}

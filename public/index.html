@@ -5,11 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Viswa Type Institute</title>
     <link rel="stylesheet" href="./bootstrap/css/bootstrap.css">
-    <link href="./fontAwesome5.12.1-web/css/all.css" rel="stylesheet" crossorigin="anonymous">
+    <link href="fontawesome-free-5.13.0-web/css/all.css" rel="stylesheet" crossorigin="anonymous">
     <!-- <link href="../node_modules/@fortawesome/fontawesome-free/css/solid.css" rel="stylesheet" crossorigin="anonymous"> -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <style>
       .smallName{
         font-size: 1rem;
@@ -79,13 +76,48 @@
       .modal-dialog{
         max-width: 100% !important;
       }
-      
+
+      .searchContainer{
+      max-width: 1024px;
+      padding: 10px;
+      margin: 25px auto;
+    }
+      .searchContainer ul{
+          display:inline-flex;
+          margin: 10px;
+          padding: 10px;
+          list-style-type:none;
+
+      }
+      .searchContainer ul li{
+        padding: 10px;
+      }
       
 
     </style>
   </head>
   <body>
-
     <div id="root"></div>
+	<div>
+        <h3>Sample Icons</h3>
+        <i className="fas fa-phone-alt"> </i>
+        <i class="fa fa-address-book-o" aria-hidden="true"></i>
+        <i class="fas fa-phone-square-alt"></i>
+        <i class="fas fa-cloud"></i>
+        <i class="fas fa-coffee"></i>
+        <i class="fas fa-car"></i>
+        <i class="fas fa-file"></i>
+        <i class="fas fa-bars"></i>
+        <button style='font-size:14px'>Button <i className="fas fa-phone-alt"></i></button>
+        <button style='font-size:16px'>Button <i class="fa fa-address-book-o"></i></button>
+        <button style='font-size:18px'>Button <i class="fas fa-phone-square-alt"></i></button>
+        <button style='font-size:24px'>Button <i class="fas fa-cloud"></i></button>
+        <button style='font-size:28px'>Button <i class="fas fa-coffee"></i></button>
+        <button style='font-size:30px'>Button <i class="fas fa-car"></i></button>
+        <button style='font-size:32px'>Button <i class="fas fa-file"></i></button>
+        <button style='font-size:34px'>Button <i class="fas fa-bars"></i></button>
+        <button style='font-size:36px'>Button <i class='fab fa-500px'></i></button>
+        <button style='font-size:40px'>Button <i class="fas fa-chess-king"></i></button>
+    </div>
   </body>
 </html>

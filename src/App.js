@@ -12,6 +12,7 @@ import OrderDetails from './orderdetails';
 import OrderDetailsList from './orderdetailslist';
 import AddOrder from './addorder';
 import Home from './home';
+import Search from './search';
 import Menu from './menu';
 import NotFound from './notfound';
 import {Typeahead, Fragment, Control } from 'react-typeahead';
@@ -52,6 +53,7 @@ class App extends React.Component {
                 <Route exact path="/" render={props => <Home users={this.state.users} update={this.updateData} remove={this.removeData} />} />
                 <Route exact path="/olist" render={props => <OrderDetailsList users={this.state.users} update={this.updateData} remove={this.removeData} />} />
                 <Route exact path="/od" render={props => <OrderDetails users={this.state.users} update={this.updateData} remove={this.removeData} />} />
+                <Route exact path="/ser" render={props => <Search users={this.state.users} update={this.updateData} remove={this.removeData} />} />
                 <Route exact path="/add" render={props => <AddOrder users={this.state.users} action={this.addData} />} />
                 <Route render={(base) => <Redirect to={base} />} />
               </Switch>
@@ -64,7 +66,7 @@ class App extends React.Component {
 
   writeUserData = () => {
     Firebase.database().ref('/').set(this.state);
-    console.log('DATA SAVED');
+    console.log('DATA SAVED', this.state);
   }
 
   getUserData = () => {
@@ -83,7 +85,7 @@ class App extends React.Component {
   }
 
   componentDidUpdate(prevState) {
-    console.log("componentDidUpdate", prevState, this.state);
+    // console.log("componentDidUpdate", prevState, this.state);
     // only write when it's different with the new state
     if (prevState.users !== this.state.users) {
       this.writeUserData();

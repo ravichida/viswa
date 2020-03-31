@@ -7,8 +7,7 @@ class UpdateReadOnly extends React.Component {
         this.updateChange = this.updateChange.bind(this);
         this.updateField = this.updateField.bind(this);
         this.uid = React.createRef();
-        this.fname = React.createRef();
-        this.lname = React.createRef();
+        this.name = React.createRef();
         this.email = React.createRef();
         this.phone = React.createRef();
         this.order = React.createRef();
@@ -19,8 +18,7 @@ class UpdateReadOnly extends React.Component {
         this.state = {
             user: {
                 uid: '',
-                fname: '',
-                lname: '',
+                name: '',
                 email: '',
                 phone: '',
                 order: '',
@@ -50,12 +48,10 @@ class UpdateReadOnly extends React.Component {
 
     updateChange = (event) => {
         event.preventDefault();
-        if (typeof this.props.update === 'function') {
+        /* if (typeof this.props.update === 'function') {
             let user = {};
-            user = { ...this.state.user, name: this.state.user.fname + " " + this.state.user.lname };
-            console.log("User details @ update.js", user);
             this.props.update(user);
-        }
+        } */
     }
     updateBtn = (event) => {
         event.preventDefault();
@@ -96,12 +92,8 @@ class UpdateReadOnly extends React.Component {
                                 <input type="text" ref={this.total} value={this.state.user.items * this.state.user.price || ''} onChange={(e) => this.updateField("total", e)} className="form-control" placeholder="Total Cost" readOnly />
                             </div>
                             <div className="form-group col-md-6">
-                                <label>First Name</label>
+                                <label>Name</label>
                                 <input type="text" ref={this.fname} value={this.state.user.fname || ''} onChange={(e) => this.updateField("fname", e)} className="form-control" placeholder="First Name" readOnly />
-                            </div>
-                            <div className="form-group col-md-6">
-                                <label>Last Name</label>
-                                <input type="text" ref={this.lname} value={this.state.user.lname || ''} onChange={(e) => this.updateField("lname", e)} className="form-control" placeholder="Last Name" readOnly />
                             </div>
                             <div className="form-group col-md-6">
                                 <label>Email</label>

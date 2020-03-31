@@ -1,8 +1,7 @@
 import React from 'react';
 import DatePicker from "react-datepicker";
-
-import "../node_modules/react-datepicker/dist/react-datepicker.css"
-
+ 
+import "react-datepicker/dist/react-datepicker.css";
 
 class AddOrder extends React.Component{
     constructor(props){
@@ -15,13 +14,13 @@ class AddOrder extends React.Component{
     state = {
         startDate: new Date()
       };
-
-    handleChange = date => {
+    
+      handleChange = date => {
         this.setState({
           startDate: date
         });
       };
-    
+
     render() {
       return (
         <div className='row'>
@@ -30,10 +29,10 @@ class AddOrder extends React.Component{
             <form>
                 <div className="form-row">
                 <input type='hidden' ref='uid' />
-                {/* <div className="form-group col-md-6">
+                <div className="form-group col-md-6">
                     <label>Oder No</label>
                     <input type="text" ref='orderno' className="form-control" placeholder="Oder No" />
-                </div> */}
+                </div>
                 <div className="form-group col-md-6">
                     <label>Order Name</label>
                     <input type="text" ref='order' className="form-control" placeholder="Oder Name" />
@@ -49,10 +48,6 @@ class AddOrder extends React.Component{
                     <input type="number" ref='price' className="form-control" placeholder="Item Cost" />
                 </div>
                 <div className="form-group col-md-6">
-                    <label>Total</label>
-                    <input type="text" ref='total' className="form-control" placeholder="Total Cost" />
-                </div>
-                <div className="form-group col-md-6">
                     <label>Name</label>
                     <input type="text" ref='name' className="form-control" placeholder="Name" />
                 </div>
@@ -65,14 +60,14 @@ class AddOrder extends React.Component{
                     <input type="number"  max={999999999999} ref='phone' className="form-control" placeholder="Mobile / Phone No" />
                 </div>
                 <div className="form-group col-md-6">
-                    <h6>Date</h6>
-                    <DatePicker selected={this.state.startDate} onChange={this.handleChange} ref="oDate" />
-                    {/* <input type="number" ref='phone' className="form-control" placeholder="Date format 'MM/DD/YYYY'" /> */}
+                    <label>Date</label>
+                    <DatePicker selected={this.state.startDate} ref='startdate' onChange={this.handleChange} />
+                    {/* <input type="text" ref='date' className="form-control" placeholder="MM/DD/YYYY" /> */}
                 </div>
                 </div>
                 <button type="button" className="btn btn-primary" onClick={ this.addUser }>Save</button>
             </form>
-            {/* <div><pre>{JSON.stringify(this.state, null, 2) }</pre></div> */}
+            <div><pre>{JSON.stringify(this.state, null, 2) }</pre></div>
             </div>
         </div>
       )
@@ -80,48 +75,47 @@ class AddOrder extends React.Component{
 
     addUser = (event) => {
         console.log("Added form details");
-        event.preventDefault();
+        let orderno = this.refs.orderno.value;
         let name = this.refs.name.value;
         let email = this.refs.email.value;
         let phone = this.refs.phone.value;
         let order = this.refs.order.value;
         let items = this.refs.items.value;
         let price = this.refs.price.value;
-        let total = ( parseInt(items) * parseInt(price)).toLocaleString('en-IN');
         let uid = this.refs.uid.value;
-        let oDate = this.state.startDate;
-        const condition = (name && email && phone && order && items && price && total);
+        let startDate = this.state.startDate
+        const condition = (name && email && phone && order && orderno && items && price && startDate);
         if (uid && condition){
           const { users } = this.state;
           const devIndex = users.findIndex(data => {
             return data.uid === uid 
           });
+          users[devIndex].orderno = orderno;
           users[devIndex].name = name;
           users[devIndex].email = email;
           users[devIndex].phone = phone;
           users[devIndex].order = order;
-          users[devIndex].items = items;
-          users[devIndex].price = price;
-          users[devIndex].total = total;
-          users[devIndex].oDate = oDate;
+          users[devIndex].items = parseInt(items);
+          users[devIndex].price = parseInt(price);
+          // users[devIndex].total = parseInt(items) * parseInt(price);
+          users[devIndex].startdate = startDate;
           this.setState({ users });
         }
         else if (condition) {
             const uid = new Date().getTime().toString();
             const user = {
+                "name": name,
                 "email": email,
-                "name": name,
-                "items": items,
-                "name": name,
-                "order": order,
                 "phone": phone,
-                "price": price,
-                "total": total,
-                "uid": uid,
-                "oDate": oDate
+                "order": order,
+                "orderno": parseInt(orderno),
+                "items": parseInt(items),
+                "price": parseInt(price),
+                "uid": parseInt(uid),
+                "startdate": startDate.toString()
                 }
             this.props.action(user);
-            console.log(user);
+            console.log("action user", user);
         }
       
         this.refs.uid.value = '';
@@ -131,23 +125,20 @@ class AddOrder extends React.Component{
         this.refs.order.value = '';
         this.refs.items.value = '';
         this.refs.price.value = '';
-        this.refs.total.value = '';
-        this.refs.oDate.value = '';
+        this.refs.startdate.value = '';
       }
 
       add  = ()=>{ // remove this sample child function to add order
         const user1 = {
             "email": "email@sample.com",
-            "fname": "Ravi",
             "items": "200",
-            "lname": "Test",
             "name": "Ravi Test",
             "order": "Ravi Books",
             "orderno": "8001",
             "phone": "8123456789",
             "price": "50",
-            "total": "10,000",
-            "oDate": "03/10/08",
+            "total": 0,
+            "date": "03/4/20",
             "uid": "1675303448945"
           }
         this.props.action(user1);

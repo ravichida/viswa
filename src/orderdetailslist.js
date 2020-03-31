@@ -36,13 +36,13 @@ class OrderDetailsList extends React.Component {
                 {
                   this.props.users
                     .map(user =>
-                      <tr key={user.uid} style={{}}>
+                      <tr key={user.orderno} style={{}}>
                         <td className="">{user.orderno}</td>
                         <td className="">{user.order}</td>
                         <td className="">{user.name}</td>
                         <td className="">{user.items}</td>
                         <td className="">{user.price}</td>
-                        <td className="">{user.total}</td>
+                        <td className="">{user.items * user.price}</td>
                         <td className=""><button type="button" className="btn btn-danger" onClick={(event) => this.removeData(user, event)}>Delete</button></td>
                         <td className=""><button type="button" className="btn btn-primary" onClick={(event) => this.editData(user, event)}>Edit</button></td>
                       </tr>
@@ -67,7 +67,8 @@ class OrderDetailsList extends React.Component {
     if (typeof (this.props.update) === 'function') {
       console.log("updateParent OrderDList.js", user);
       this.props.update(user);
-      $("#orderModal").modal({ show: false })
+      $("#orderModal").modal({ show: false });
+      $(".modal-backdrop").remove();
     }
   }
 
