@@ -3,9 +3,6 @@ import DatePicker from "react-datepicker";
 import moment from "moment";
 import "react-datepicker/dist/react-datepicker.css";
 
-import "flatpickr/dist/themes/material_green.css";
-import Flatpickr from "react-flatpickr";
-
 class Update extends React.Component {
     constructor(props) {
         super(props);
@@ -23,7 +20,6 @@ class Update extends React.Component {
         this.items = React.createRef();
         this.price = React.createRef();
         this.total = React.createRef();
-        this.startdate = React.createRef();
 
         this.state = {
             user: {
@@ -36,8 +32,7 @@ class Update extends React.Component {
                 orderno: '',
                 items: 0,
                 price: 0,
-                total: 0,
-                startdate: ""
+                total: 0
             }
         }
 
@@ -45,31 +40,19 @@ class Update extends React.Component {
 
     state = {
         startDate: new Date()
-        //alert n date
-    };
-
-    handleChange = date => {
-        alert(date);
-        console.log("startDate", date)
+      };
+    
+      handleChange = date => {
+        //   alert(date);
         this.setState({
-            startDate: date
-          });
-        /* this.setState({
-            user: {
-                ...this.state.user,
-                ['startDate']: date
-            } 
-
-        }, function () {
-            console.log(this.state.user);
+          startDate: date
         });
-        */
-    };
+      };
     //   user: {startDate: date}
 
 
+
     componentWillReceiveProps(nextProps) {
-        console.log("NP Updated");
         if (this.props.user !== nextProps.user) {
             this.setState({ user: nextProps.user })
         }
@@ -107,13 +90,8 @@ class Update extends React.Component {
         console.log("startDate", this.state.user.startdate)
         // console.log("updatejs", this.props.user);
         // readOnly={this.props.user}
-        let datepicker =  this.state.user.startdate
         return (
             <div className='row'>
-
-                <div className='col-xl-12'>
-                    {JSON.stringify(this.props.user, null, 2)}
-                </div>
                 <div className='col-xl-12'>
                     <form>
                         <div className="form-row">
@@ -148,19 +126,18 @@ class Update extends React.Component {
                             </div>
                             <div className="form-group col-md-6">
                                 <label>Date - {this.state.user.startdate}</label>
-                                <DatePicker
-                                    selected={this.state.startDate}
-                                    dateFormat="dd-mm-yyyy"
-                                    // onChange={(d)=> this.setState({date:d})}
-                                    // value={this.state.user.startdate}
-                                    ref='startdate'
-                                    onChange={this.handleChange} 
-                                    />
+                                <DatePicker 
+                                selected={this.state.startDate}
+                                // value ={moment(this.state.user.startdate).format("DD/MM/YYYY")} 
+                                ref='oDate' 
+                                onChange={this.handleChange} />
                                 {/* <input type="text" ref='date' className="form-control" placeholder="MM/DD/YYYY" /> */}
                             </div>
                             {/* this.state.user.startdate ? moment(this.state.user.startdate, 'DD-MM-YYYY') : null
                             {/* this.state.user.startdate ? moment(this.state.user.startdate, 'DD-MM-YYYY') : null
                              */}
+                             
+                             
                         </div>
                         <button type="button" className="btn btn-primary" onClick={this.updateChange} data-toggle="modal" data-target="#orderModal" data-show="false">Save</button>
                     </form>
