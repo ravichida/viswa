@@ -1,10 +1,6 @@
 import React from 'react';
-import DatePicker from "react-datepicker";
 import moment from "moment";
-import "react-datepicker/dist/react-datepicker.css";
-
-import "flatpickr/dist/themes/material_green.css";
-import Flatpickr from "react-flatpickr";
+import DP from 'react-date-picker';
 
 class Update extends React.Component {
     constructor(props) {
@@ -44,16 +40,19 @@ class Update extends React.Component {
     }
 
     state = {
-        startDate: new Date()
+        startDate: new Date(),
+        formattedValue: "11/19/2016",
+        date: new Date()
         //alert n date
     };
 
-    handleChange = date => {
+    handleChange = (date, formattedValue) => {
         alert(date);
         console.log("startDate", date)
         this.setState({
-            startDate: date
-          });
+            startDate: date,
+            formattedValue: "11/19/2016"
+        });
         /* this.setState({
             user: {
                 ...this.state.user,
@@ -66,6 +65,8 @@ class Update extends React.Component {
         */
     };
     //   user: {startDate: date}
+
+    onChange = date => this.setState({ date:date })
 
 
     componentWillReceiveProps(nextProps) {
@@ -107,7 +108,7 @@ class Update extends React.Component {
         console.log("startDate", this.state.user.startdate)
         // console.log("updatejs", this.props.user);
         // readOnly={this.props.user}
-        let datepicker =  this.state.user.startdate
+        let datepicker = this.state.user.startdate
         return (
             <div className='row'>
 
@@ -148,18 +149,28 @@ class Update extends React.Component {
                             </div>
                             <div className="form-group col-md-6">
                                 <label>Date - {this.state.user.startdate}</label>
-                                <DatePicker
+                                {/* 
+                                    <DatePicker
                                     selected={this.state.startDate}
-                                    dateFormat="dd-mm-yyyy"
+                                    // dateFormat={"dd-mm-yyyy"}
+                                    value={moment("2020-03-31T22:28:35+05:30").format('DD-MM-YYYY')}
                                     // onChange={(d)=> this.setState({date:d})}
-                                    // value={this.state.user.startdate}
                                     ref='startdate'
-                                    onChange={this.handleChange} 
-                                    />
+                                    onChange={this.handleChange}
+                                />
+                                 */}
                                 {/* <input type="text" ref='date' className="form-control" placeholder="MM/DD/YYYY" /> */}
+                            </div>
+                            <div className="form-group col-md-6">
+                                <label>Date - {this.state.user.startdate}</label>
+                                <DP
+                                    onChange={this.onChange}
+                                    value={this.state.date}
+                                />
                             </div>
                             {/* this.state.user.startdate ? moment(this.state.user.startdate, 'DD-MM-YYYY') : null
                             {/* this.state.user.startdate ? moment(this.state.user.startdate, 'DD-MM-YYYY') : null
+                            moment("2020-03-31T22:28:35+05:30").format('DD-MM-YYYY') : moment().format('DD-MM-YYYY')
                              */}
                         </div>
                         <button type="button" className="btn btn-primary" onClick={this.updateChange} data-toggle="modal" data-target="#orderModal" data-show="false">Save</button>
