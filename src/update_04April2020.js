@@ -1,18 +1,18 @@
 import React from 'react';
 import moment from "moment";
-import PropTypes from 'prop-types';
 import DayPickerInput from "react-day-picker/DayPickerInput";
 import "../node_modules/react-day-picker/lib/style.css";
 
 class Update extends React.Component {
-
     constructor(props) {
         super(props);
+        this.state = { readonly: true };
         this.updateChange = this.updateChange.bind(this);
         this.updateField = this.updateField.bind(this);
 
         this.uid = React.createRef();
-        this.name = React.createRef();
+        this.fname = React.createRef();
+        this.lname = React.createRef();
         this.email = React.createRef();
         this.phone = React.createRef();
         this.order = React.createRef();
@@ -22,48 +22,75 @@ class Update extends React.Component {
         this.total = React.createRef();
         this.startdate = React.createRef();
 
-        this.state = this.InditialStateObj;
-
-        this.baseState = this.state;
+        this.state = {
+            user: {
+                uid: '',
+                fname: '',
+                lname: '',
+                email: '',
+                phone: '',
+                order: '',
+                orderno: '',
+                items: 0,
+                price: 0,
+                total: 0,
+                startdate: ""
+            },
+            startDate: ""
+        }
 
     }
 
-    InditialStateObj = {
-        user: {
-            uid: '',
-            name: '',
-            email: '',
-            phone: '',
-            order: '',
-            orderno: '',
-            items: 0,
-            price: 0,
-            total: 0,
-            startdate: ""
-        },
-        startDate: "",
-        selectedDay: ""
-    }
-
+    state = {
+        selectedDay: undefined
+    };
 
     handleDayChange = selectedDay => {
-        this.setState({ 
+        this.setState({ selectedDay : moment(selectedDay).format()});
+    };
+
+    /* state = {
+        startDate: new Date(),
+        formattedValue: "11/19/2016",
+        date: new Date()
+        //alert n date
+    };
+
+    onChange = date => this.setState({ date: date }) */
+
+    handleChange = (date, formattedValue) => {
+        alert(date);
+        console.log("startDate", date)
+        this.setState({
+            startDate: date,
+            formattedValue: "11/19/2016"
+        });
+        /* this.setState({
             user: {
                 ...this.state.user,
-                startdate: moment(selectedDay).format()
-            }
-            // selectedDay: moment(selectedDay).format(),
-            // user: {startdate: moment(selectedDay).format()}
+                ['startDate']: date
+            } 
+
+        }, function () {
+            console.log(this.state.user);
         });
+        */
     };
+    //   user: {startDate: date}
+
+    // onChange = date => this.setState({ date:date })
+    componentDidMount() {
+        // this.state.startDate = "2020-03-31T17:22:21+05:30";
+        this.setState({
+            startDate: this.state.user.startdate
+        })
+        // this.state.startDate = this.state.user.startdate;
+    }
 
     componentWillReceiveProps(nextProps) {
         console.log("NP Updated");
         if (this.props.user !== nextProps.user) {
-            this.setState({
-                user: nextProps.user,
-                // selectedDay: nextProps.user.startdate
-            });
+            this.setState({ user: nextProps.user })
         }
     }
     updateField = (name, e) => {
@@ -78,35 +105,45 @@ class Update extends React.Component {
     }
 
     updateChange = (event) => {
-        event.preventDefault();
+        /* event.preventDefault();
         if (typeof this.props.update === 'function') {
-            /* 
-            User Full name
             let user = {};
-            user = { ...this.state.user, name: this.state.user.fname + " " + this.state.user.lname }; */
-            console.log("updat user", this.state.user);
-            this.props.update(this.state.user);
+            user = { ...this.state.user, name: this.state.user.fname + " " + this.state.user.lname };
+            console.log("update Change @ update.js", user);
+            this.props.update(user);
 
-        }
-        // this.resetForm();
+        } */
     }
-
-    resetForm = () => {
-        this.setState(this.baseState)
+    updateBtn = (event) => {
+        event.preventDefault();
+        this.setState({
+            showUpdateBtn: !this.state.showUpdateBtn,
+            readonly: "readonly"
+        });
     }
-
-
 
     render() {
+        console.log("startDate", this.state.user.startdate)
+        // console.log("updatejs", this.props.user);
+        // readOnly={this.props.user}
+        let datepicker = this.state.user.startdate
         return (
             <div className='row'>
 
-                {/* <div className='col-xl-12'>
+                <div className='col-xl-12'>
                     {JSON.stringify(this.props.user, null, 2)}
-                </div> */}
+                </div>
                 <div className='col-xl-12'>
                     <form>
                         <div className="form-row">
+                            <div>
+                                <p>
+                                this.state.startDate : {this.state.startDate}
+                                </p>
+                                <p>
+                                this.state.user.startDate : {this.state.user.startdate}
+                                </p>
+                            </div>
                             <input type='hidden' ref={this.uid} value={this.state.user.uid || ''} />
                             <div className="form-group col-md-6">
                                 <label>Oder No</label>
@@ -137,33 +174,19 @@ class Update extends React.Component {
                                 <input type="number" ref={this.phone} value={this.state.user.phone || ''} onChange={(e) => this.updateField("phone", e)} className="form-control" placeholder="Mobile / Phone No" />
                             </div>
                             <div className="form-group col-md-6">
-                                <label>Date </label>
-                                <div>
-                                    <DayPickerInput
-                                        overlayComponent={CustomOverlay}
-                                        name="birthday"
-                                        placeholder="DD/MM/YYYY"
-                                        format="DD/MM/YYYY"
-                                        // value={moment(this.state.selectedDay).format('DD/MM/YYYY')}
-                                        value={moment(this.state.user.startdate).format('DD/MM/YYYY')}
-                                        onDayChange={this.handleDayChange}
-                                    />
-                                </div>
+                                <label>Date - {this.state.user.startdate}</label>
+                                <DayPickerInput
+                                    name="birthday"
+                                    placeholder="DD/MM/YYYY"
+                                    format="DD/MM/YYYY"
+                                    // value={moment() ? moment(this.state.user.startdate).format('DD-MM-YYYY') : moment(this.state.selectedDay).format('DD-MM-YYYY')}
+                                    value={this.state.startDate ? moment(this.state.startDate).format('DD-MM-YYYY') : null}
+                                    onDayChange={this.handleDayChange}
+                                />
+                                <p>
+                                this.state.selectedDay : {typeof(this.state.selectedDay)}
+                                </p>
                             </div>
-                            <div className="form-group col-md-6">
-                                <label>Total</label>
-                                <input type="number" ref={this.phone} value={(this.state.user.items * this.state.user.price) || ''} onChange={(e) => this.updateField("phone", e)} className="form-control" placeholder="Total" />
-                            </div>
-                            {/* <div className="form-group col-md-6">
-                                <div>
-                                    <p>
-                                        this.state.selectedDay : {moment(this.state.selectedDay).format()}
-                                    </p>
-                                    <p>
-                                        this.state.user.startdate : {this.state.user.startdate}
-                                    </p>
-                                </div>
-                            </div> */}
                         </div>
                         <button type="button" className="btn btn-primary" onClick={this.updateChange} data-toggle="modal" data-target="#orderModal" data-show="false">Save</button>
                     </form>
@@ -177,38 +200,3 @@ export default Update;
 function UpdateBtn(props) {
     return <button type="button" className="btn btn-primary">Save</button>
 }
-
-function CustomOverlay({ classNames, selectedDay, children, ...props }) {
-    let overlayMargin = {
-        marginTop: -200,
-        marginLeft: 100,
-    }
-    return (
-        <div
-            className={classNames.overlayWrapper}
-            // style={{ marginTop: -200 }}
-            style={overlayMargin}
-            {...props}
-        >
-            <div className={classNames.overlay}>
-                {/* <h3>Hello day picker!</h3> */}
-                {/* <p>
-            <input />
-            <button onClick={() => console.log('clicked!')}>button</button>
-          </p> */}
-                {/* <p>
-            {selectedDay
-              ? `You picked: ${selectedDay.toLocaleDateString()}`
-              : 'Please pick a day'}
-          </p> */}
-                {children}
-            </div>
-        </div>
-    );
-}
-
-CustomOverlay.propTypes = {
-    classNames: PropTypes.object.isRequired,
-    selectedDay: PropTypes.instanceOf(Date),
-    children: PropTypes.node.isRequired,
-};
