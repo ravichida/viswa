@@ -1,9 +1,10 @@
 import React from 'react';
+import moment from "moment";
 
 class UpdateReadOnly extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {readonly: true};
+        this.state = { readonly: true };
         this.updateChange = this.updateChange.bind(this);
         this.updateField = this.updateField.bind(this);
         this.uid = React.createRef();
@@ -27,7 +28,7 @@ class UpdateReadOnly extends React.Component {
                 price: '',
                 total: ''
             },
-            showUpdateBtn:false
+            showUpdateBtn: false
         }
     }
     componentWillReceiveProps(nextProps) {
@@ -56,9 +57,9 @@ class UpdateReadOnly extends React.Component {
     updateBtn = (event) => {
         event.preventDefault();
         this.setState({
-            showUpdateBtn : !this.state.showUpdateBtn,
-            readonly : "readonly"
-            });
+            showUpdateBtn: !this.state.showUpdateBtn,
+            readonly: "readonly"
+        });
     }
 
     render() {
@@ -103,6 +104,10 @@ class UpdateReadOnly extends React.Component {
                                 <label>Mobile / Phone No</label>
                                 <input type="number" ref={this.phone} value={this.state.user.phone || ''} onChange={(e) => this.updateField("phone", e)} className="form-control" placeholder="Mobile / Phone No" readOnly />
                             </div>
+                            <div className="form-group col-md-6">
+                                <label>Date</label>
+                                <input type="text" ref={this.startdate} value={this.state.user.startdate ? moment(this.state.user.startdate).format('DD/MM/YYYY') : null || ''} onChange={(e) => this.updateField("startdate", e)} className="form-control" placeholder="Date" readOnly />
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -110,16 +115,17 @@ class UpdateReadOnly extends React.Component {
         )
         if (this.state.readonly) {
             return (
-                <UpdateBtn  />
-            );
-          }
-          return (
                 <UpdateBtn />
-          );
+            );
+        }
+        return (
+            <UpdateBtn />
+        );
     }
 }
 export default UpdateReadOnly;
 
 function UpdateBtn(props) {
     return <button type="button" className="btn btn-primary">Save</button>
-  }
+}
+

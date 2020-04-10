@@ -52,7 +52,7 @@ class App extends React.Component {
               <Switch>
                 <Route exact path="/" render={props => <Home users={this.state.users} update={this.updateData} remove={this.removeData} />} />
                 <Route exact path="/olist" render={props => <OrderDetailsList users={this.state.users} update={this.updateData} remove={this.removeData} />} />
-                <Route exact path="/od" render={props => <OrderDetails users={this.state.users} update={this.updateData} remove={this.removeData} />} />
+                {/* <Route exact path="/od" render={props => <OrderDetails users={this.state.users} update={this.updateData} remove={this.removeData} />} /> */}
                 <Route exact path="/ser" render={props => <Search users={this.state.users} update={this.updateData} remove={this.removeData} />} />
                 <Route exact path="/add" render={props => <AddOrder users={this.state.users} action={this.addData} />} />
                 <Route render={(base) => <Redirect to={base} />} />

@@ -12,6 +12,7 @@
     "moment": "^2.24.0",
     "popper.js": "^1.14.3",
     "react": "^16.13.1",
+    "react-datepicker": "^2.14.1",
     "react-day-picker": "^7.4.0",
     "react-dom": "^16.13.1",
     "react-flatpickr": "^3.10.0",

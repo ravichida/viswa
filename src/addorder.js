@@ -1,7 +1,7 @@
 import React from 'react';
-/* import DatePicker from "react-datepicker";
+import DatePicker from "react-datepicker";
  
-import "react-datepicker/dist/react-datepicker.css"; */
+import "react-datepicker/dist/react-datepicker.css";
 
 class AddOrder extends React.Component{
     constructor(props){
@@ -11,7 +11,7 @@ class AddOrder extends React.Component{
           };
     }
 
-    /* state = {
+    state = {
         startDate: new Date()
       };
     
@@ -19,7 +19,7 @@ class AddOrder extends React.Component{
         this.setState({
           startDate: date
         });
-      }; */
+      };
 
     render() {
       return (
@@ -59,14 +59,14 @@ class AddOrder extends React.Component{
                     <label>Mobile / Phone No</label>
                     <input type="number"  max={999999999999} ref='phone' className="form-control" placeholder="Mobile / Phone No" />
                 </div>
-                {/* <div className="form-group col-md-6">
+                <div className="form-group col-md-6">
                     <label>Date</label>
                     <DatePicker selected={this.state.startDate} ref='startdate' onChange={this.handleChange} />
-                </div> */}
+                </div>
                 </div>
                 <button type="button" className="btn btn-primary" onClick={ this.addUser }>Save</button>
             </form>
-            <div><pre>{JSON.stringify(this.state, null, 2) }</pre></div>
+            {/* <div><pre>{JSON.stringify(this.state, null, 2) }</pre></div> */}
             </div>
         </div>
       )

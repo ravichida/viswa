@@ -18,7 +18,7 @@ class Menu extends React.Component {
     Links = [
         {name: <i className='fas fa-home'>  Home</i>, path: "/", id: 1},
         {name: <i className='fas fa-th-large'>  Orders</i>, path: "/olist", id: 2},
-        {name: <i className='fas fa-info-circle'>  Details</i> , path: "/od", id: 3},
+        // {name: <i className='fas fa-info-circle'>  Details</i> , path: "/od", id: 3},
         {name: <i className='fas fa-search'>  Search</i>, path: "/ser", id: 5},
         {name: <i className='fas fa-plus'>  Add</i>, path: "/add", id: 4}
     ]
