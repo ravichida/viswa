@@ -22,6 +22,16 @@ class AddOrder extends React.Component{
       };
 
     render() {
+
+        var Users = this.props.users
+        var sortedUsers = [];
+        for(let i=0; i<Users.length-1; i++) {
+            sortedUsers[i] = Users[i].orderno;
+        }
+        sortedUsers.sort(function(a, b){return a - b});
+        var highestOrder = sortedUsers[sortedUsers.length-1];
+        var newOrderNumber = parseInt(highestOrder)+1;
+
       return (
         <div className='row'>
             <div className='col-xl-12'>
@@ -31,7 +41,7 @@ class AddOrder extends React.Component{
                 <input type='hidden' ref='uid' />
                 <div className="form-group col-md-6">
                     <label>Oder No</label>
-                    <input type="text" ref='orderno' className="form-control" placeholder="Oder No" />
+                    <input type="number" ref='orderno' className="form-control" value={String(newOrderNumber)} readOnly placeholder="Oder No" />
                 </div>
                 <div className="form-group col-md-6">
                     <label>Order Name</label>
@@ -74,7 +84,7 @@ class AddOrder extends React.Component{
 
     addUser = (event) => {
         console.log("Added form details");
-        let orderno = this.refs.orderno.value;
+        let orderno = parseInt(this.refs.orderno.value);
         let name = this.refs.name.value;
         let email = this.refs.email.value;
         let phone = this.refs.phone.value;
