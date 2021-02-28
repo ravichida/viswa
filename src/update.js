@@ -110,7 +110,8 @@ class Update extends React.Component {
                             <input type='hidden' ref={this.uid} value={this.state.user.uid || ''} />
                             <div className="form-group col-md-6">
                                 <label>Oder No</label>
-                                <input type="text" ref={this.orderno} value={this.state.user.orderno || ''} onChange={(e) => this.updateField("orderno", e)} className="form-control" placeholder="Oder No" />
+                                {/*<input type="number" ref={this.orderno} value={this.state.user.orderno || ''} readOnly onChange={(e) => this.updateField("orderno", e)} className="form-control" placeholder="Oder No" />*/}
+                                <input type="number" ref={this.orderno} value={this.state.user.orderno || ''} readOnly className="form-control" placeholder="Oder No" />
                             </div>
                             <div className="form-group col-md-6">
                                 <label>Oder Name</label>

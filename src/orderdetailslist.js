@@ -4,6 +4,7 @@ import ModalDialog from './modalDialog'
 class OrderDetailsList extends React.Component {
   constructor(props) {
     super(props);
+    this.sortUsers = this.sortUsers.bind(this);
     this.editData = this.editData.bind(this);
     this.updateApp = this.updateApp.bind(this);
     this.removeData = this.removeData.bind(this);
@@ -54,13 +55,17 @@ class OrderDetailsList extends React.Component {
         </div>
         <div className='row'>
           <div className='col-xl-12'>
-            <ModalDialog user={this.state.user} update={this.updateApp} />
+            <ModalDialog user={this.state.user} users={this.props.users} update={this.updateApp} />
             <div>
             </div>
           </div>
         </div>
       </div>
     )
+  }
+
+  sortUsers(users) {
+
   }
 
   updateApp(user) {
@@ -87,6 +92,6 @@ class OrderDetailsList extends React.Component {
       user: user
     });
   }
-  
+
 }
 export default OrderDetailsList;
