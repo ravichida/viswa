@@ -6,6 +6,7 @@ import "react-datepicker/dist/react-datepicker.css";
 class AddOrder extends React.Component{
     constructor(props){
         super(props);
+        this.orderNumber = this.orderNumber.bind(this);
         this.state = {
             users: [],
           };
@@ -22,18 +23,23 @@ class AddOrder extends React.Component{
       };
 
     render() {
-
         var Users = this.props.users
         var sortedUsers = [];
-        for(let i=0; i<Users.length-1; i++) {
+        for(let i=0; i<Users.length; i++) {
             sortedUsers[i] = Users[i].orderno;
         }
         sortedUsers.sort(function(a, b){return a - b});
         var highestOrder = sortedUsers[sortedUsers.length-1];
-        var newOrderNumber = parseInt(highestOrder)+1;
+        var newOrderNumber = parseInt(highestOrder)+1;;
 
       return (
         <div className='row'>
+            <div className='col-xl-12'>
+                {/*{JSON.stringify(this.props.users,null, 2)}
+                {sortedUsers}<br />
+                {highestOrder}<br />
+                {newOrderNumber}<br />*/}
+            </div>
             <div className='col-xl-12'>
             <h4 className='my-3'>Add Order</h4>
             <form>
@@ -81,7 +87,17 @@ class AddOrder extends React.Component{
         </div>
       )
     }
-
+    orderNumber = (users) => {
+        // var Users = this.props.users
+        var sortedUsers = [];
+        for(let i=0; i<users.length; i++) {
+            sortedUsers[i] = users[i].orderno;
+        }
+        sortedUsers.sort(function(a, b){return a - b});
+        var highestOrder = sortedUsers[sortedUsers.length-1];
+        var newOrderNumber = parseInt(highestOrder)+1;
+        return newOrderNumber
+    }
     addUser = (event) => {
         console.log("Added form details");
         let orderno = parseInt(this.refs.orderno.value);

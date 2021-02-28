@@ -31,8 +31,8 @@ class OrderDetailsList extends React.Component {
                   <th>Items</th>
                   <th>Cost</th>
                   <th>Total</th>
-                  <th>Delete</th>
                   <th>Edit</th>
+                  <th>Delete</th>
                 </tr>
                 {
                   this.props.users
@@ -44,18 +44,21 @@ class OrderDetailsList extends React.Component {
                         <td className="">{user.items}</td>
                         <td className="">{user.price}</td>
                         <td className="">{user.items * user.price}</td>
-                        <td className=""><button type="button" className="btn btn-danger" onClick={(event) => this.removeData(user, event)}>Delete</button></td>
                         <td className=""><button type="button" className="btn btn-primary" onClick={(event) => this.editData(user, event)}>Edit</button></td>
+                        <td className=""><button type="button" className="btn btn-danger" onClick={(event) => this.removeData(user, event)}>Delete</button></td>
                       </tr>
                     )
                 }
               </tbody>
             </table>
           </div>
+          <div className='col-xl-12'>
+            {JSON.stringify(this.props.users, null, 4)}
+          </div>
         </div>
         <div className='row'>
           <div className='col-xl-12'>
-            <ModalDialog user={this.state.user} users={this.props.users} update={this.updateApp} />
+            <ModalDialog user={this.state.user} update={this.updateApp} />
             <div>
             </div>
           </div>
