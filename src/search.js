@@ -17,7 +17,7 @@ class Search extends React.Component {
                   align: "right",
                   textAlign: "right",
                   display: "block",
-                  paddingTop: "15px"
+                  paddingTop: "10px"
                 } 
 
   state = { searchString: '' }

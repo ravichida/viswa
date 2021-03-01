@@ -100,7 +100,6 @@ class Update extends React.Component {
     render() {
         return (
             <div className='row'>
-
                 {/* <div className='col-xl-12'>
                     {JSON.stringify(this.props.user, null, 2)}
                 </div> */}

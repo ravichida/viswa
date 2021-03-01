@@ -6,6 +6,7 @@ import "react-datepicker/dist/react-datepicker.css";
 class AddOrder extends React.Component{
     constructor(props){
         super(props);
+        this.orderNumber = this.orderNumber.bind(this);
         this.state = {
             users: [],
           };
@@ -23,17 +24,16 @@ class AddOrder extends React.Component{
 
     render() {
 
-        var Users = this.props.users
-        var sortedUsers = [];
-        for(let i=0; i<Users.length-1; i++) {
-            sortedUsers[i] = Users[i].orderno;
-        }
-        sortedUsers.sort(function(a, b){return a - b});
-        var highestOrder = sortedUsers[sortedUsers.length-1];
-        var newOrderNumber = parseInt(highestOrder)+1;
+        var newOrderNumber = this.orderNumber(this.props.users);
 
       return (
         <div className='row'>
+            <div className='col-xl-12'>
+                {/*{JSON.stringify(this.props.users,null, 2)}
+                {sortedUsers}<br />
+                {highestOrder}<br 
+                {newOrderNumber}<br />*/}
+            </div>
             <div className='col-xl-12'>
             <h4 className='my-3'>Add Order</h4>
             <form>
@@ -41,7 +41,7 @@ class AddOrder extends React.Component{
                 <input type='hidden' ref='uid' />
                 <div className="form-group col-md-6">
                     <label>Oder No</label>
-                    <input type="number" ref='orderno' className="form-control" value={String(newOrderNumber)} readOnly placeholder="Oder No" />
+                    <input type="number" ref='orderno' className="form-control" value={String(this.orderNumber(this.props.users))} readOnly placeholder="Oder No" />
                 </div>
                 <div className="form-group col-md-6">
                     <label>Order Name</label>
@@ -76,10 +76,21 @@ class AddOrder extends React.Component{
                 </div>
                 <button type="button" className="btn btn-primary" onClick={ this.addUser }>Save</button>
             </form>
-            {/* <div><pre>{JSON.stringify(this.state, null, 2) }</pre></div> */}
+            {/* <div><pre>{JSON.stringify(newOrderNumber, null, 2) }</pre></div> */}
             </div>
         </div>
       )
+    }
+
+    orderNumber = function(users) {
+            let sortedUsers = [];
+            for(let i=0; i<users.length; i++) {
+                sortedUsers[i] = users[i].orderno;
+            }
+            sortedUsers.sort(function(a, b){return a - b});
+            let highestOrder = sortedUsers[sortedUsers.length-1];
+            let orderNumber = parseInt(highestOrder)+1;
+            return orderNumber;
     }
 
     addUser = (event) => {
