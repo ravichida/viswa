@@ -52,9 +52,9 @@ class OrderDetailsList extends React.Component {
               </tbody>
             </table>
           </div>
-          <div className='col-xl-12'>
+          {/* <div className='col-xl-12'>
             {JSON.stringify(this.props.users, null, 4)}
-          </div>
+          </div> */}
         </div>
         <div className='row'>
           <div className='col-xl-12'>
