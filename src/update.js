@@ -58,7 +58,7 @@ class Update extends React.Component {
     };
 
     componentWillReceiveProps(nextProps) {
-        console.log("NP Updated");
+        // console.log("NP Updated");
         if (this.props.user !== nextProps.user) {
             this.setState({
                 user: nextProps.user,

@@ -21,7 +21,30 @@ class Search extends React.Component {
         this.updateApp = this.updateApp.bind(this);
         this.removeData = this.removeData.bind(this);
         this.handleChange = this.handleChange.bind(this);
+
+        // this.dflex = React.createRef();
     }
+
+    /*componentDidMount() {
+        const width = this.dflex.current.clientWidth;
+        let totalElements = Math.round(width / 336) || 0;
+        console.log("totalElements ", totalElements);
+        let totalMargin = width - (totalElements * 336) || 0;
+        console.log("totalMargin ", totalMargin);
+        let marginLeft = Math.abs(Math.round(totalMargin / (totalElements * 2))) || 0;
+        let marginRight = Math.abs(Math.round(totalMargin / (totalElements * 2))) || 0;
+        console.log("marginLeft ", marginLeft);
+        console.log("marginRight ", marginRight);
+        this.setState(
+            {
+                width: width,
+                marginLeft: marginLeft,
+                marginRight: marginRight
+            },
+            () => console.log(this.state.width)
+        );
+
+    }*/
 
     handleChange = (e) => {
         this.setState({searchString: e.target.value});
@@ -44,18 +67,18 @@ class Search extends React.Component {
                                                      placeholder="Type here..."/></div>
                 </div>
                 <div className='row'>
-                    <div className='col-xl-12 col-md-12'>
+                    <div className='col-sm-12 col-md-12' ref={this.dflex}>
                         {/*<div className="searchContainer col-xl-6 col-md-6">*/}
                         {/*</div>*/}
-                        <div className="d-flex flex-wrap">
+                        <div className="d-flex flex-wrap justify-content-center">
                             {libraries.map(user =>
                                 <div
                                     key={user.orderno}
                                     className="card-deck pt-1 mb3"
-                                    style={{margin: '0.5rem', width: "20rem"}}
+                                    style={{margin: "0.5rem auto", width: "336px"}}
                                     id={user.uid}
                                 >
-                                    <div className="card text-dark d-flex align-items-stretch">
+                                    <div className="card text-dark d-flex align-items-stretch" style={{maxWidth: "336px"}}>
                                         <div className="card-body">
                                             <h5 className="card-title"><span
                                                 className="text-danger">Name: </span> {user.name}</h5>

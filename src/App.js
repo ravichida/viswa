@@ -66,7 +66,7 @@ class App extends React.Component {
 
   writeUserData = () => {
     Firebase.database().ref('/').set(this.state);
-    console.log('DATA SAVED', this.state);
+    // console.log('DATA SAVED', this.state);
   }
 
   getUserData = () => {
@@ -74,10 +74,10 @@ class App extends React.Component {
     ref.on('value', snapshot => {
       const state = snapshot.val();
       this.setState(state, function(){
-        console.log('DATA RETRIEVED Users', this.state.users);
+        // console.log('DATA RETRIEVED Users', this.state.users);
       });
     });
-    console.log('DATA RETRIEVED');
+    // console.log('DATA RETRIEVED');
   }
 
   componentDidMount() {
@@ -89,7 +89,7 @@ class App extends React.Component {
     // only write when it's different with the new state
     if (prevState.users !== this.state.users) {
       this.writeUserData();
-      console.log("componentDidUpdate, writeUserData");
+      // console.log("componentDidUpdate, writeUserData");
     }
   }
 
