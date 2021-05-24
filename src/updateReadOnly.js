@@ -63,7 +63,7 @@ class UpdateReadOnly extends React.Component {
     }
 
     render() {
-        console.log("updatejs", this.props.user);
+        // console.log("updatejs", this.props.user);
         // readOnly={this.props.user}
         return (
             <div className='row'>

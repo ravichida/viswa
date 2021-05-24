@@ -1,27 +1,38 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import {Link,} from "react-router-dom";
+import {useHistory} from "react-router-dom";
 
 class Menu extends React.Component {
+    Links = [
+        {name: <i className='fas fa-home'> Home</i>, path: "/", id: 1},
+        {name: <i className='fas fa-th-large'> Orders</i>, path: "/orders", id: 2},
+        // {name: <i className='fas fa-info-circle'>  Details</i> , path: "/od", id: 3},
+        {name: <i className='fas fa-search'> Search</i>, path: "/search", id: 5},
+        {name: <i className='fas fa-plus'> Add</i>, path: "/add", id: 4}
+    ]
+
     constructor(props) {
         super(props);
 
+        this.state = {activeId: 1};
     }
-
-    state = { activeId: 1 };
 
     handleClick(event, id) {
         // event.preventDefault();
         // console.log("id", id);
-        this.setState({ activeId: id })
+        this.setState({activeId: id})
     }
 
-    Links = [
-        {name: <i className='fas fa-home'>  Home</i>, path: "/", id: 1},
-        {name: <i className='fas fa-th-large'>  Orders</i>, path: "/olist", id: 2},
-        // {name: <i className='fas fa-info-circle'>  Details</i> , path: "/od", id: 3},
-        {name: <i className='fas fa-search'>  Search</i>, path: "/ser", id: 5},
-        {name: <i className='fas fa-plus'>  Add</i>, path: "/add", id: 4}
-    ]
+    componentDidMount(links) {
+        // console.log("menu.js", window.location.pathname);
+        let location = window.location.pathname;
+        this.Links.map(link => {
+            if (location === link.path) {
+                this.setState({activeId: link.id});
+                // console.log("active id", link.path, link.id);
+            }
+        });
+    }
 
     render() {
         return (

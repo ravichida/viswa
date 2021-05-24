@@ -73,7 +73,7 @@ class OrderDetailsList extends React.Component {
 
   updateApp(user) {
     if (typeof (this.props.update) === 'function') {
-      console.log("updateParent OrderDList.js", user);
+      // console.log("updateParent OrderDList.js", user);
       this.props.update(user);
       $("#orderModal").modal({ show: false });
       $(".modal-backdrop").remove();

@@ -73,7 +73,7 @@ class AddOrder extends React.Component{
                 </div>
                 <div className="form-group col-md-6">
                     <label>Date</label>
-                    <DatePicker selected={this.state.startDate} ref='startdate' onChange={this.handleChange} />
+                    <DatePicker className="form-control react-datepicker__input-container" selected={this.state.startDate} ref='startdate' onChange={this.handleChange} />
                 </div>
                 </div>
                 <button type="button" className="btn btn-primary" onClick={ this.addUser }>Save</button>

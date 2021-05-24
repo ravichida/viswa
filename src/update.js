@@ -3,6 +3,8 @@ import moment from "moment";
 import PropTypes from 'prop-types';
 import DayPickerInput from "react-day-picker/DayPickerInput";
 import "../node_modules/react-day-picker/lib/style.css";
+import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css';
 
 class Update extends React.Component {
 
@@ -80,13 +82,12 @@ class Update extends React.Component {
     updateChange = (event) => {
         event.preventDefault();
         if (typeof this.props.update === 'function') {
-            /* 
-            User Full name
-            let user = {};
-            user = { ...this.state.user, name: this.state.user.fname + " " + this.state.user.lname }; */
-            console.log("updat user", this.state.user);
+            // console.log("update user", this.state.user);
             this.props.update(this.state.user);
-
+            /*if (window.confirm('Please click OK to close the window?')) {
+                console.log("dialog-close-update.js");
+                this.props.close();
+            }*/
         }
         // this.resetForm();
     }
@@ -138,9 +139,9 @@ class Update extends React.Component {
                             </div>
                             <div className="form-group col-md-6">
                                 <label>Date </label>
-                                <div>
                                     <DayPickerInput
                                         overlayComponent={CustomOverlay}
+                                        className="form-control"
                                         name="birthday"
                                         placeholder="DD/MM/YYYY"
                                         format="DD/MM/YYYY"
@@ -148,7 +149,6 @@ class Update extends React.Component {
                                         value={moment(this.state.user.startdate).format('DD/MM/YYYY')}
                                         onDayChange={this.handleDayChange}
                                     />
-                                </div>
                             </div>
                             <div className="form-group col-md-6">
                                 <label>Total</label>
@@ -166,6 +166,7 @@ class Update extends React.Component {
                             </div> */}
                         </div>
                         <button type="button" className="btn btn-primary" onClick={this.updateChange} data-toggle="modal" data-target="#orderModal" data-show="false">Save</button>
+                        {/*<button type="button" className="btn btn-primary" onClick={this.updateChange} data-show="false">Save</button>*/}
                     </form>
                 </div>
             </div>

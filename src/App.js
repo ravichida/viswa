@@ -6,6 +6,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import { useHistory ,useLocation } from 'react-router-dom';
 import Firebase from '../node_modules/firebase';
 import config from './config';
 import OrderDetails from './orderdetails';
@@ -29,6 +30,18 @@ class App extends React.Component {
     this.updateData = this.updateData.bind(this);
     this.removeData = this.removeData.bind(this);
   }
+    /*componentDidMount() {
+      let location = window.location.pathname;
+      console.log("app.js-cdm", location);
+  }
+
+    componentWillReceiveProps(nextProps) {
+      console.log("app-cwrp", window.location.pathname);
+      if (nextProps.location !== this.props.location) {
+        // navigated!
+      }
+    }*/
+
 
   render() {
     // console.log("process.env.PUBLIC_URL", process.env.PUBLIC_URL);
@@ -44,16 +57,16 @@ class App extends React.Component {
           </div>
           <div className="row">
             <div className="col-xl-12">
-              <Menu />
+              <Menu location={window.location.path} />
             </div>
           </div>
           <div className="row  my-2">
             <div className="col-xl-12">
               <Switch>
                 <Route exact path="/" render={props => <Home users={this.state.users} update={this.updateData} remove={this.removeData} />} />
-                <Route exact path="/olist" render={props => <OrderDetailsList users={this.state.users} update={this.updateData} remove={this.removeData} />} />
+                <Route exact path="/orders" render={props => <OrderDetailsList users={this.state.users} update={this.updateData} remove={this.removeData} />} />
                 {/* <Route exact path="/od" render={props => <OrderDetails users={this.state.users} update={this.updateData} remove={this.removeData} />} /> */}
-                <Route exact path="/ser" render={props => <Search users={this.state.users} update={this.updateData} remove={this.removeData} />} />
+                <Route exact path="/search" render={props => <Search users={this.state.users} update={this.updateData} remove={this.removeData} />} />
                 <Route exact path="/add" render={props => <AddOrder users={this.state.users} action={this.addData} />} />
                 <Route render={(base) => <Redirect to={base} />} />
               </Switch>
@@ -97,7 +110,7 @@ class App extends React.Component {
     // console.log("This State Data", this.state.users);
     if (user) {
       const { users } = this.state;
-      console.log('users Data', users);
+      // console.log('users Data', users);
       users.push(user)
       this.setState({ users });
     }
@@ -112,14 +125,14 @@ class App extends React.Component {
       if(users !== newState){
         this.setState({ users: newState });
       }
-      console.log("Updated Users state");
+      // console.log("Updated Users state");
     }
   }
 
   updateData = (user) => {
-    console.log("updateData fun in app.js", user);
+    // console.log("updateData fun in app.js", user);
     if(user){
-      console.log("if user in app.js");
+      // console.log("if user in app.js");
       let name = user.name;
       let email = user.email;
       let phone = user.phone;
@@ -131,12 +144,12 @@ class App extends React.Component {
       let startdate = user.startdate
       const condition = ( name && email && phone && order && orderno && items && price && startdate);
       if (uid && condition) {
-        console.log("Update condition met");
+        // console.log("Update condition met");
         const { users } = this.state;
         const devIndex = users.findIndex(user => {
           return user.uid === uid
         });
-        console.log("devIndex", devIndex);
+        // console.log("devIndex", devIndex);
         users[devIndex].name = name;
         users[devIndex].email = email;
         users[devIndex].phone = phone;
@@ -147,7 +160,7 @@ class App extends React.Component {
         users[devIndex].startdate = startdate;
         this.setState({ users: users });
       }
-    console.log("Updateed State appjs", this.state.users);
+    // console.log("Updated State appjs", this.state.users);
   }
 }
 }
