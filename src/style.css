@@ -40,7 +40,7 @@
     top: -6px;
     left: -7px;
     height: 38px;
-    box-shadow: 0 0 0 0.2rem rgb(0 123 255) !important;
+    /*box-shadow: 0 0 0 0.2rem rgb(0 123 255) !important;*/
 }
 .react-datepicker__input-container input:focus,
 .react-datepicker__input-container input:focus-visible,
@@ -50,7 +50,7 @@
     background-color: #fff;
     border-color: #80bdff;
     outline: 0;
-    box-shadow: 0 0 0 0.2rem rgb(0 123 255 / 25%);
+    /*box-shadow: 0 0 0 0.2rem rgb(0 123 255 / 25%);*/
 }
 
 menu-link-bg{
