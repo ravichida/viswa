@@ -17,6 +17,7 @@ import Search from './search';
 import Menu from './menu';
 import NotFound from './notfound';
 import {Typeahead, Fragment, Control } from 'react-typeahead';
+import './style.css';
 
 class App extends React.Component {
   constructor(props) {
@@ -45,10 +46,11 @@ class App extends React.Component {
 
   render() {
     // console.log("process.env.PUBLIC_URL", process.env.PUBLIC_URL);
-    const base = process.env.PUBLIC_URL;
-    // console.log("base Redirect", base);
+    // const base = process.env.PUBLIC_URL;
+    // console.log("location path", "/");
     return (
-      <Router  basename={process.env.PUBLIC_URL}>
+      // <Router  basename={process.env.PUBLIC_URL}>
+      <Router basename="/">
         <div className="container-fluid pt-3">
           <div className="row">
             <div className='col-xl-12'>
@@ -57,7 +59,10 @@ class App extends React.Component {
           </div>
           <div className="row">
             <div className="col-xl-12">
-              <Menu location={window.location.path} />
+              {
+                // console.log("public url", process.env.PUBLIC_URL);
+              }
+              <Menu location={window.location.pathname} />
             </div>
           </div>
           <div className="row  my-2">

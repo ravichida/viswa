@@ -62,7 +62,7 @@ class Search extends React.Component {
             <div>
                 <div className='row' style={{marginTop: "20px"}}>
                     <div className='col-sm-3 col-md-3'><i style={this.searchStyle} className="fas fa-search"> Search</i></div>
-                    <div className='col-sm-7 col-md-7'><input type="text" className="form-control form-control-lg"
+                    <div className='col-sm-8 col-md-8'><input type="text" className="form-control form-control-lg"
                                                      value={this.state.searchString} onChange={this.handleChange}
                                                      placeholder="Type here..."/></div>
                 </div>

@@ -6,7 +6,7 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
-    "bootstrap": "^4.4.1",
+    "bootstrap": "^4.5.2",
     "firebase": "^7.13.1",
     "jquery": "^3.6.0",
     "moment": "^2.24.0",
@@ -22,6 +22,7 @@
     "react-scripts": "3.4.1",
     "react-typeahead": "^2.0.0-alpha.8"
   },
+  "homepage": "https://ravichida.github.io/viswa",
   "scripts": {
     "start": "react-scripts start",
     "predeploy": "npm run build",
