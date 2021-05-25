@@ -40,19 +40,12 @@
     top: -6px;
     left: -7px;
     height: 38px;
-    box-shadow: 0 0 0 0.2rem rgb(0 123 255) !important;
 }
-.react-datepicker__input-container input:focus,
-.react-datepicker__input-container input:focus-visible,
-.DayPickerInput input:focus,
-.DayPickerInput input:focus-visible{
+.DayPickerInput input:focus{
     color: #495057;
     background-color: #fff;
     border-color: #80bdff;
     outline: 0;
-}
-
-.DayPickerInput input:focus{
     box-shadow: 0 0 0 0.2rem rgb(0 123 255 / 25%);
 }
 
