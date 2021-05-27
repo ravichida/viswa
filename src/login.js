@@ -8,7 +8,7 @@ class Login extends React.Component {
 
     constructor(props) {
         super(props);
-        this.handleChange = this.handleChange.bind(this);
+        // this.handleChange = this.handleChange.bind(this);
         this.handleSubmitClick = this.handleSubmitClick.bind(this);
 
         this.state = {
@@ -21,7 +21,7 @@ class Login extends React.Component {
 
     }
 
-    handleChange = (e) => {
+    /*handleChange = (e) => {
         console.log("Target", e.target);
         let {id, value} = e.target;
         console.log("before state", this.email.current.value, value);
@@ -34,7 +34,7 @@ class Login extends React.Component {
         }
             console.log("after state", this.state.email, this.state.password);
 
-    }
+    }*/
 
     handleSubmitClick = (e) => {
         e.preventDefault();
@@ -74,7 +74,7 @@ class Login extends React.Component {
                                        ref={this.email}
                                        aria-describedby="emailHelp"
                                        placeholder="Enter email"
-                                       onChange={this.handleChange}
+                                       // onChange={this.handleChange}
                                 />
                                 {/*<small id="emailHelp" className="form-text text-muted">We'll never share your email with*/}
                                 {/*    anyone else.</small>*/}
