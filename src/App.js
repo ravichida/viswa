@@ -9,6 +9,7 @@ import {
 import { useHistory ,useLocation } from 'react-router-dom';
 import Firebase from '../node_modules/firebase';
 import config from './config';
+import Login from './login';
 import OrderDetails from './orderdetails';
 import OrderDetailsList from './orderdetailslist';
 import AddOrder from './addorder';
@@ -68,7 +69,9 @@ class App extends React.Component {
           <div className="row  my-2">
             <div className="col-xl-12">
               <Switch>
-                <Route exact path="/" render={props => <Home users={this.state.users} update={this.updateData} remove={this.removeData} />} />
+                <Route exact path="/" render={props => <Login users={this.state.users} />} />
+                <Route exact path="/home" render={props => <Home users={this.state.users} update={this.updateData} remove={this.removeData} />} />
+                {/*<Route exact path="/" render={props => <Home users={this.state.users} update={this.updateData} remove={this.removeData} />} />*/}
                 <Route exact path="/orders" render={props => <OrderDetailsList users={this.state.users} update={this.updateData} remove={this.removeData} />} />
                 {/* <Route exact path="/od" render={props => <OrderDetails users={this.state.users} update={this.updateData} remove={this.removeData} />} /> */}
                 <Route exact path="/search" render={props => <Search users={this.state.users} update={this.updateData} remove={this.removeData} />} />
