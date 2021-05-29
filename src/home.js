@@ -22,7 +22,7 @@ class Home extends React.Component {
         <div className='row'>
           <div className='col-xl-12'>
           {/* <div className='myst'>Orders</div> */}
-            <h4 className='my-3'>Orders List</h4>
+            <h4 className='my-3'>Orders</h4>
             {this.props.users.map(user => 
             <div key={user.orderno} className="row rowblock rounded">
               <div className="col-sm-12 col-md-4 padding"><strong className="title">Order Name</strong>: <i className="fas fa-paperclip"></i> <a href="#" onClick={(event) => this.displayData(user, event)} className="" role="button">{user.order}.</a></div>

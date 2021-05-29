@@ -51,7 +51,7 @@ class Login extends React.Component {
         if (emailValue === "ravi.chida@gmail.com" && passwordValue === "crk1") {
             console.log("Login OK");
             // sendDetailsToServer()
-            window.location.pathname = "/orders";
+            window.location.pathname = "/home";
         } else {
             JSON.stringify(this.state);
             console.log("Email or Password did not match");

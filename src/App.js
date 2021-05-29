@@ -50,8 +50,7 @@ class App extends React.Component {
     // const base = process.env.PUBLIC_URL;
     // console.log("location path", "/");
     return (
-      // <Router  basename={process.env.PUBLIC_URL}>
-      <Router basename="/">
+      <Router basename={process.env.PUBLIC_URL}>
         <div className="container-fluid pt-3">
           <div className="row">
             <div className='col-xl-12'>
@@ -61,9 +60,8 @@ class App extends React.Component {
           <div className="row">
             <div className="col-xl-12">
               {
-                // console.log("public url", process.env.PUBLIC_URL);
+                <Menu location={window.location.href} />
               }
-              <Menu location={window.location.pathname} />
             </div>
           </div>
           <div className="row  my-2">
