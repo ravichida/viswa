@@ -4,11 +4,6 @@
 .react-datepicker-wrapper{
     width: 100%;
 }
-.react-datepicker__input-container{
-    /*margin:6px;*/
-    /*border: 1px solid navajowhite;*/
-    /*height: 38px;*/
-}
 
 .DayPickerInput{
     width: 100%;
@@ -40,10 +35,7 @@
     left: -7px;
     height: 38px;
 }
-.react-datepicker__input-container input:focus,
-.react-datepicker__input-container input:focus-visible,
-.DayPickerInput input:focus,
-.DayPickerInput input:focus-visible{
+.DayPickerInput input:focus{
     color: #495057;
     background-color: #fff;
     border-color: #ced4da;
@@ -52,6 +44,7 @@
 
 .DayPickerInput input:focus{
     border: 1px solid #ced4da;
+    /*box-shadow: 0 0 0 0.2rem rgb(0 123 255 / 25%);*/
 }
 
 menu-link-bg{
