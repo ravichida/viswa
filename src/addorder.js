@@ -86,13 +86,18 @@ class AddOrder extends React.Component{
 
     orderNumber = function(users) {
             let sortedUsers = [];
+            if(users.length !== 0){
             for(let i=0; i<users.length; i++) {
                 sortedUsers[i] = users[i].orderno;
             }
-            sortedUsers.sort(function(a, b){return a - b});
-            let highestOrder = sortedUsers[sortedUsers.length-1];
-            let orderNumber = parseInt(highestOrder)+1;
-            return orderNumber;
+                sortedUsers.sort(function(a, b){return a - b});
+                let highestOrder = sortedUsers[sortedUsers.length-1];
+                let orderNumber = parseInt(highestOrder)+1;
+                return orderNumber;
+            }
+            else {
+                return 3001
+            }
     }
   
     addUser = (event) => {

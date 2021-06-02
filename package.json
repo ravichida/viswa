@@ -21,7 +21,8 @@
     "react-router": "^5.1.2",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
-    "react-typeahead": "^2.0.0-alpha.8"
+    "react-typeahead": "^2.0.0-alpha.8",
+    "use-local-storage": "^2.2.1"
   },
   "homepage": "https://ravichida.github.io/viswa",
   "scripts": {
