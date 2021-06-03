@@ -15,6 +15,12 @@ class Pagenation extends React.Component {
         }
     }
 
+    componentDidMount() {
+        if(this.state.showPageNo === 1){
+            this.checkPrevious();
+            this.checkNext();
+        }
+    }
 
     handlePageChange(event, pageNo) {
         // console.log("pageNo", pageNo);

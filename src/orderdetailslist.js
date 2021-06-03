@@ -14,7 +14,8 @@ class OrderDetailsList extends React.Component {
         this.state = {
             user: {write: true},
             pages: [],
-            users: [{
+            users: []
+            /*users: [{
                 "email": "email@sample.com",
                 "items": "0",
                 "name": "",
@@ -147,8 +148,60 @@ class OrderDetailsList extends React.Component {
                 "date": "03/4/20",
                 "uid": "1675303448945"
             }
-            ]
+            ]*/
         }
+    }
+
+    componentDidMount(prevState) {
+        this.createObj();
+        setTimeout(() => {
+            this.setState((previousState) => ({
+                pages: this.state.pages.concat(this.state.users)
+            }), () => {
+                console.log(this.state.pages);
+            });
+        }, 300)
+    }
+
+    /*shouldComponentUpdate(nextProps, nextState) {
+        return this.state.pages.length != nextState.pages.length
+            // console.log("Props changed");
+
+    }*/
+
+    createObj(){
+        let newArray = ["Arr 1"];
+        var funcs = [];
+        for (var i = 1; i < 16; i++) {
+            funcs[i] = (function() {
+                var index = i;
+                let newObj = {
+                    "email": "email@sample.com",
+                    "items": "" + index,
+                    "name": "Sample",
+                    "order": "Sample Order " + index,
+                    "phone": "0123456789",
+                    "price": "" + index * 5,
+                    "total": 0,
+                    "date": "03/4/20",
+                    "uid": "1675303448945"
+                }
+                return function() {
+                    newObj.orderno = "" + index
+                    return newObj
+                }
+            })();
+        }
+        var newOrders = [];
+        for (var j = 1; j < 16; j++) {
+            newOrders.push(funcs[j]());
+        }
+        console.log("newOrders", newOrders)
+        this.setState({
+            users: newOrders
+        }, () => {
+            console.log("state objects", this.state.users);
+        })
     }
 
     render() {
@@ -216,16 +269,6 @@ class OrderDetailsList extends React.Component {
                 </div>
             </div>
         )
-    }
-
-    componentDidMount() {
-        // let pages = [];
-        // pages.concat(this.state.users);
-        this.setState((previousState) => ({
-            pages: this.state.pages.concat(this.state.users)
-        }), () => {
-            console.log(this.state.pages);
-        });
     }
 
     changePage(pageNo){
