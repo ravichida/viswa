@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "008e4c03635cc014b642e11213fd9c61",
+    "revision": "eddb7b4f9eeb61fc1719ec3b5824c9de",
     "url": "/viswa/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/viswa/static/css/2.bed90eae.chunk.css"
   },
   {
-    "revision": "9b33c5a374edba61fcd0",
+    "revision": "90054a61299441962133",
     "url": "/viswa/static/css/main.e85722e2.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/viswa/static/js/2.3ffde9c2.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "9b33c5a374edba61fcd0",
-    "url": "/viswa/static/js/main.0ff8e507.chunk.js"
+    "revision": "90054a61299441962133",
+    "url": "/viswa/static/js/main.7c77d72f.chunk.js"
   },
   {
     "revision": "db9a0d4f54a667f4464a",
