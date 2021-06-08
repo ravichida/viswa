@@ -103,11 +103,11 @@ class Search extends React.Component {
                                             <p className="card-text"><span
                                                 className="">Start Date: </span>{moment(user.startdate).format('DD/MM/YYYY')}
                                             </p>
-                                            <button type="button" className="btn btn-danger"
-                                                    onClick={(event) => this.removeData(user, event)}>Delete
-                                            </button>
-                                            <button type="button" className="btn btn-primary ml-3"
+                                            <button type="button" className="btn btn-primary"
                                                     onClick={(event) => this.editData(user, event)}>Edit
+                                            </button>
+                                            <button type="button" className="btn btn-danger ml-3"
+                                                    onClick={(event) => this.removeData(user, event)}>Delete
                                             </button>
                                         </div>
                                     </div>

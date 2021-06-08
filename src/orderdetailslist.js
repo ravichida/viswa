@@ -125,6 +125,33 @@ class OrderDetailsList extends React.Component {
         })
     }
 
+    updateApp(order) {
+        if (typeof (this.props.update) === 'function') {
+            // console.log("updateParent OrderDList.js", user);
+            this.props.update(order);
+            $("#orderModal").modal({show: false});
+            $(".modal-backdrop").remove();
+        }
+    }
+
+    removeData(order, e)
+    {
+        e.preventDefault();
+        if (typeof (this.props.remove) === 'function') {
+            console.log("Remove Data @ odlist.js", order);
+            this.props.remove(order);
+        }
+    }
+
+    editData(order, e)
+    {
+        e.preventDefault();
+        $("#orderModal").modal({show: true});
+        this.setState({
+            user: order
+        });
+    }
+
     render() {
         return (
             <div>
