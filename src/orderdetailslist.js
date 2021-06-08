@@ -29,7 +29,8 @@ class OrderDetailsList extends React.Component {
             });
         }, 300);
 
-        axios.get(`http://localhost:3000/viswa/orders.json`)
+        // axios.get(`http://localhost:3000/viswa/orders.json`)
+        axios.get(`/viswa/orders.json`)
             .then(res => {
                 let orders = res.data;
                 orders.sort(function(a, b){return a.orderno - b.orderno});
