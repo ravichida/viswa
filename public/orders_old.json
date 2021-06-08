@@ -1,5 +1,4 @@
-{
-    "orders": [{
+[{
             "email": "email@sample.com",
             "items": "1",
             "name": "Sample",
@@ -1200,4 +1199,3 @@
             "orderno": "100"
         }
     ]
-}

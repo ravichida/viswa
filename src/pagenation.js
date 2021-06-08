@@ -9,27 +9,46 @@ class Pagenation extends React.Component {
         this.handlePrevious = this.handlePrevious.bind(this);
         this.next = React.createRef()
         this.state = {
+            endpage: 1,
             showPageNo: 1,
             nextState: "",
-            previousState: ""
+            previousState: "",
+            noOfPages: []
         }
     }
 
     componentDidMount() {
-        if(this.state.showPageNo === 1){
-            this.checkPrevious();
-            this.checkNext();
-        }
+        setTimeout(() => {
+            if(this.props.orders !== null){
+                let endpage = Math.ceil(this.props.jsonOrders.length / 10);
+                // console.log("endpage", endpage);
+                let pages = [];
+                for(let i=0; i<endpage; i++) {
+                    pages.push(i);
+                }
+                // console.log(pages);
+                this.setState({
+                    endpage: endpage,
+                    noOfPages: pages
+                }, () => {
+                    // console.log(this.state.noOfPages);
+                    this.checkPreviousAndNext();
+                })
+            }
+        }, 300)
+    }
+
+    checkPreviousAndNext(){
+        this.checkPrevious();
+        this.checkNext();
     }
 
     handlePageChange(event, pageNo) {
-        // console.log("pageNo", pageNo);
         event.preventDefault();
         this.setState({
             showPageNo: pageNo
         }, () => {
-            this.checkNext(pageNo);
-            this.checkPrevious(pageNo);
+            this.checkPreviousAndNext();
         })
         this.props.changePage(pageNo);
     }
@@ -41,68 +60,53 @@ class Pagenation extends React.Component {
         }, () => {
             // console.log(this.state.showPageNo);
             this.props.changePage(this.state.showPageNo);
-            this.checkPrevious();
-            this.checkNext();
+            this.checkPreviousAndNext();
         })
 
     }
 
-    handleNext(event, pageNo) {
+    handleNext(event) {
         event.preventDefault();
-        let lastpage = this.props.users.length
-        if (this.state.showPageNo < lastpage) {
+        if (this.state.showPageNo < this.state.endpage) {
             this.setState({
                 showPageNo: this.state.showPageNo + 1
             }, () => {
                 this.props.changePage(this.state.showPageNo);
-                this.checkPrevious();
-                this.checkNext();
+                this.checkPreviousAndNext();
                 // console.log("handleNext if state.showPageNo", this.state.showPageNo);
             })
-        }else {
-            this.setState({
-                showPageNo: pageNo
-            }, () => {
-                // this.props.changePage(this.state.showPageNo);
-                // this.checkNext(pageNo);
-                console.log("handleNext else state.showPageNo", this.state.showPageNo);
-            });
         }
 
     }
 
     checkPrevious() {
-        let maxNext = this.props.users.length;
         if (this.state.showPageNo === 1) {
             this.setState({
                 previousState: "disabled"
             }, () => {
-                // console.log("nextState", this.state.nextState);
+
             })
         } else if (this.state.showPageNo > 1) {
-            // console.log("maxNext else if", maxNext);
             this.setState({
                 previousState: ""
             }, () => {
-                // console.log("nextState", this.state.nextState);
+
             })
         }
     }
 
     checkNext() {
-        let maxNext = this.props.users.length;
-        if (this.state.showPageNo === maxNext) {
+        if (this.state.showPageNo === this.state.endpage) {
             this.setState({
                 nextState: "disabled"
             }, () => {
-                // console.log("nextState", this.state.nextState);
+                // console.log("endpage", this.state.endpage);
             })
-        } else if (this.state.showPageNo < maxNext) {
-            // console.log("maxNext else if", maxNext);
+        }else if(this.state.showPageNo < this.state.endpage){
             this.setState({
                 nextState: ""
             }, () => {
-                // console.log("nextState", this.state.nextState);
+
             })
         }
     }
@@ -126,16 +130,16 @@ class Pagenation extends React.Component {
                     }
                     {
 
-                        this.props.users.map((page, index) =>
-                            <li className="page-item" key={page.orderno}>
+                        this.state.noOfPages.map((page, index) =>
+                            <li className="page-item" key={page}>
                                 <a className="page-link"
-                                   key={"pga" + index}
+                                   key={page}
                                     // href=""
                                     // to={url.path}
                                     // className={this.state.activeId === url.id ? "nav-link nav-item btn-success menublock active" : "nav-link nav-item btn-success menublock"}
-                                   onClick={(event) => this.handlePageChange(event, index + 1)}
+                                   onClick={(event) => this.handlePageChange(event, page + 1)}
                                 >
-                                    {index + 1}
+                                    {page + 1}
                                 </a>
                             </li>
                         )
