@@ -16,6 +16,7 @@ import AddOrder from './addorder';
 import Home from './home';
 import Search from './search';
 import Menu from './menu';
+import Create from './create';
 import NotFound from './notfound';
 import {Typeahead, Fragment, Control } from 'react-typeahead';
 import './style.css';
@@ -68,12 +69,13 @@ class App extends React.Component {
             <div className="col-xl-12">
               <Switch>
                 <Route exact path="/" render={props => <Login users={this.state.users} />} />
-                <Route exact path="/home" render={props => <Home users={this.state.users} update={this.updateData} remove={this.removeData} />} />
+                <Route exact path="/home" render={props => <Home orders={this.state.users} update={this.updateData} remove={this.removeData} />} />
                 {/*<Route exact path="/" render={props => <Home users={this.state.users} update={this.updateData} remove={this.removeData} />} />*/}
                 <Route exact path="/orders" render={props => <OrderDetailsList users={this.state.users} update={this.updateData} remove={this.removeData} />} />
                 {/* <Route exact path="/od" render={props => <OrderDetails users={this.state.users} update={this.updateData} remove={this.removeData} />} /> */}
                 <Route exact path="/search" render={props => <Search users={this.state.users} update={this.updateData} remove={this.removeData} />} />
                 <Route exact path="/add" render={props => <AddOrder users={this.state.users} action={this.addData} />} />
+                <Route exact path="/create" render={props => <Create orders={this.state.users} createDada={this.createData} />} />
                 <Route render={(base) => <Redirect to={base} />} />
               </Switch>
             </div>
@@ -119,6 +121,15 @@ class App extends React.Component {
       // console.log('users Data', users);
       users.push(user)
       this.setState({ users });
+    }
+  }
+  createData = orders => {
+    // console.log("This State Data", this.state.users);
+    if (orders) {
+      const { users } = this.state;
+      // console.log('Orders Data', orders);
+      // users.push(user)
+      this.setState({ users : orders});
     }
   }
 

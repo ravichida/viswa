@@ -25,7 +25,7 @@ class ModalDialogReadOnly extends React.Component {
                 <button type="button" className="close" data-dismiss="modal">&times;</button>
               </div>
               <div className="modal-body">
-                  <UpdateReadOnly user={this.props.user} readonly="false" update={this.updateList} />
+                  <UpdateReadOnly order={this.props.order} readonly="false" update={this.updateList} />
               </div>
               <div className="modal-footer">
                 <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>

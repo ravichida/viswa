@@ -23,20 +23,20 @@ class Home extends React.Component {
           <div className='col-xl-12'>
           {/* <div className='myst'>Orders</div> */}
             <h4 className='my-3'>Orders</h4>
-            {this.props.users.map(user => 
-            <div key={user.orderno} className="row rowblock rounded">
-              <div className="col-sm-12 col-md-4 padding"><strong className="title">Order Name</strong>: <i className="fas fa-paperclip"></i> <a href="#" onClick={(event) => this.displayData(user, event)} className="" role="button">{user.order}.</a></div>
-              <div className="col-sm-3 col-md-2 padding"><strong className="title">Items</strong>: {user.items}.</div>
-              <div className="col-sm-3 col-md-2 padding"><strong className="title">Cost</strong>: {user.price}.</div>
-              <div className="col-sm-3 col-md-2 padding"><strong className="title">Total</strong>: {user.items * user.price}.</div>
-              <div className="col-sm-3 col-md-2 padding"><strong className="title">Call</strong>: <a href={"tele:+91"+user.phone} className="" role="button"><i className="fas fa-phone-alt"> </i></a></div>
+            {this.props.orders.map(order =>
+            <div key={order.orderno} className="row rowblock rounded">
+              <div className="col-sm-12 col-md-4 padding"><strong className="title">Order Name</strong>: <i className="fas fa-paperclip"></i> <a href="#" onClick={(event) => this.displayData(order, event)} className="" role="button">{order.order}.</a></div>
+              <div className="col-sm-3 col-md-2 padding"><strong className="title">Items</strong>: {order.items}.</div>
+              <div className="col-sm-3 col-md-2 padding"><strong className="title">Cost</strong>: {order.price}.</div>
+              <div className="col-sm-3 col-md-2 padding"><strong className="title">Total</strong>: {order.items * order.price}.</div>
+              <div className="col-sm-3 col-md-2 padding"><strong className="title">Call</strong>: <a href={"tele:+91"+order.phone} className="" role="button"><i className="fas fa-phone-alt"> </i></a></div>
             </div>
             )}
             </div>
         </div>
         <div className='row'>
           <div className='col-xl-12'>
-            <ModalDialogReadOnly user={this.state.user} update={this.updateApp} />
+            <ModalDialogReadOnly order={this.state.order} update={this.updateApp} />
             <div>
             </div>
           </div>
@@ -61,11 +61,11 @@ class Home extends React.Component {
     }
   }
 
-  displayData(user, e) {
+  displayData(order, e) {
     e.preventDefault();
     $("#orderModal").modal({ show: true });
     this.setState({
-      user: user
+      order: order
     });
   }
   
