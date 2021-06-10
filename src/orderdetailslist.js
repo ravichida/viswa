@@ -20,21 +20,28 @@ class OrderDetailsList extends React.Component {
     }
 
     componentDidMount() {
-        this.createObj();
+        // this.createObj();
+        this.setState((previousState) => ({
+            jsonOrders : this.props.orders
+        }), () => {
+            // console.log("this.props.orders", this.props.orders);
+        });
         setTimeout(() => {
             this.setState((previousState) => ({
                 orders: this.state.jsonOrders.slice(0,10)
             }), () => {
                 // console.log(this.state.orders);
+                // console.log("this.state.orders", this.state.orders);
             });
-        }, 300);
+        }, 100);
 
         // axios.get(`http://localhost:3000/viswa/orders.json`)
-        axios.get(`/viswa/orders.json`)
+        // axios.get(`/viswa/orders.json`)
+        /*axios.get(`/viswa/orders.json`)
             .then(res => {
                 let orders = res.data;
                 orders.sort(function(a, b){return a.orderno - b.orderno});
-                // console.log("sort", orders);
+                console.log("sort", orders);
                 this.setState(
                     {
                         jsonOrders: orders
@@ -43,7 +50,22 @@ class OrderDetailsList extends React.Component {
                         // window.orders = orders;
                         // console.log("axios created Orders", this.state.jsonOrders.length);
                     });
-            })
+            })*/
+    }
+    componentWillReceiveProps(newProps) {
+        if( newProps.orders != this.props.orders ) {
+            console.log("this.props.orders", this.props.orders);
+            setTimeout(() => {
+                this.setState((previousState) => ({
+                    jsonOrders : this.props.orders
+                }), () => {
+                    console.log("this.props.orders", this.props.orders);
+                    this.setState({
+                        orders: this.state.jsonOrders.slice(0,10)
+                    });
+                });
+            }, 100)
+        }
     }
 
     /*shouldComponentUpdate(nextProps, nextState) {
@@ -90,41 +112,6 @@ class OrderDetailsList extends React.Component {
             // console.log("state pages", this.state.pages);
         });
     }*/
-
-    createObj() {
-        let newArray = ["Arr 1"];
-        var funcs = [];
-        for (var i = 1; i < 11; i++) {
-            funcs[i] = (function () {
-                var index = i;
-                let newObj = {
-                    "email": "email@sample.com",
-                    "items": "" + index,
-                    "name": "Sample",
-                    "order": "Sample Order " + index,
-                    "phone": "0123456789",
-                    "price": "" + index * 5,
-                    "total": 0,
-                    "date": "03/4/20",
-                    "uid": "1675303448945"
-                }
-                return function () {
-                    newObj.orderno = "" + index
-                    return newObj
-                }
-            })();
-        }
-        var newOrders = [];
-        for (var j = 1; j < 11; j++) {
-            newOrders.push(funcs[j]());
-        }
-        // console.log("newOrders", newOrders)
-        this.setState({
-            users: newOrders
-        }, () => {
-            // console.log("state objects", this.state.users);
-        })
-    }
 
     updateApp(order) {
         if (typeof (this.props.update) === 'function') {

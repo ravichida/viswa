@@ -106,7 +106,7 @@ class UpdateReadOnly extends React.Component {
                             </div>
                             <div className="form-group col-md-6">
                                 <label>Date</label>
-                                <input type="text" ref={this.startdate} value={this.state.order.startdate ? moment(this.state.order.startdate).format('DD/MM/YYYY') : null || ''} onChange={(e) => this.updateField("startdate", e)} className="form-control" placeholder="Date" readOnly />
+                                <input type="text" ref={this.startdate} value={this.state.order.date ? moment(this.state.order.date).format('DD/MM/YYYY') : null || ''} onChange={(e) => this.updateField("startdate", e)} className="form-control" placeholder="Date" readOnly />
                             </div>
                         </div>
                     </form>

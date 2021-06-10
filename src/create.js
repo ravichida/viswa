@@ -16,7 +16,7 @@ class Create extends React.Component {
                 "price": "",
                 "total": "",
                 "date": "",
-                "uid": "1",
+                "uid": "",
                 "orderno": ""
             }]
         }
@@ -43,7 +43,7 @@ class Create extends React.Component {
 
     createObj(fromNo, toNo) {
         // console.log("!!fromNo && !!toNo", !!fromNo && !!toNo);
-        if (fromNo === "" && toNo === "") {
+        if ((!!fromNo && !!toNo) || (fromNo === "" && toNo === "")) {
             let fromNumber;
             let toNumber;
             // console.log("fromNo & toNo", fromNo, toNo)
@@ -73,7 +73,7 @@ class Create extends React.Component {
                             "price": "" + index * 5,
                             "total": 0,
                             "date": "03/4/20",
-                            "uid": "" + 1
+                            "uid": index
                         }
                     return function () {
                         newObj.orderno = index
@@ -108,6 +108,22 @@ class Create extends React.Component {
         if (typeof(this.state.createdOrders) === 'object') {
             // console.log("updateParent OrderDList.js", user);
             this.props.createDada(this.state.createdOrders);
+            this.setState({
+                createdOrders: [{
+                    "email": "",
+                    "items": "",
+                    "name": "",
+                    "order": "",
+                    "phone": "",
+                    "price": "",
+                    "total": "",
+                    "date": "",
+                    "uid": "",
+                    "orderno": ""
+                }]
+            }, () => {
+                // console.log("state createdOrders", this.state.createdOrders);
+            })
         }
     }
 

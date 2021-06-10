@@ -36,6 +36,7 @@ class Home extends React.Component {
         </div>
         <div className='row'>
           <div className='col-xl-12'>
+            {console.log("this.state.order", this.state.order)}
             <ModalDialogReadOnly order={this.state.order} update={this.updateApp} />
             <div>
             </div>

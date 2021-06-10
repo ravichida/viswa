@@ -18,12 +18,22 @@ class Pagenation extends React.Component {
     }
 
     componentDidMount() {
+        this.pages();
+    }
+
+    componentWillReceiveProps(newProps) {
+        if (newProps.jsonOrders != this.props.jsonOrders) {
+            this.pages();
+        }
+    }
+
+    pages(){
         setTimeout(() => {
-            if(this.props.orders !== null){
+            if (this.props.orders !== null) {
                 let endpage = Math.ceil(this.props.jsonOrders.length / 10);
                 // console.log("endpage", endpage);
                 let pages = [];
-                for(let i=0; i<endpage; i++) {
+                for (let i = 0; i < endpage; i++) {
                     pages.push(i);
                 }
                 // console.log(pages);
@@ -37,8 +47,7 @@ class Pagenation extends React.Component {
             }
         }, 300)
     }
-
-    checkPreviousAndNext(){
+    checkPreviousAndNext() {
         this.checkPrevious();
         this.checkNext();
     }
@@ -102,7 +111,7 @@ class Pagenation extends React.Component {
             }, () => {
                 // console.log("endpage", this.state.endpage);
             })
-        }else if(this.state.showPageNo < this.state.endpage){
+        } else if (this.state.showPageNo < this.state.endpage) {
             this.setState({
                 nextState: ""
             }, () => {
