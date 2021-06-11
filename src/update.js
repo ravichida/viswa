@@ -143,10 +143,10 @@ class Update extends React.Component {
                                         overlayComponent={CustomOverlay}
                                         className="form-control"
                                         name="birthday"
-                                        placeholder="DD/MM/YYYY"
-                                        format="DD/MM/YYYY"
+                                        placeholder="MM/DD/YYYY"
+                                        format="MM/DD/YYYY"
                                         // value={moment(this.state.selectedDay).format('DD/MM/YYYY')}
-                                        value={moment(this.state.user.startdate).format('DD/MM/YYYY')}
+                                        value={moment(this.state.user.startdate).format('MM/DD/YYYY')}
                                         onDayChange={this.handleDayChange}
                                     />
                             </div>

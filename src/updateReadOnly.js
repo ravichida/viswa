@@ -94,7 +94,7 @@ class UpdateReadOnly extends React.Component {
                             </div>
                             <div className="form-group col-md-6">
                                 <label>Name</label>
-                                <input type="text" ref={this.fname} value={this.state.order.fname || ''} onChange={(e) => this.updateField("fname", e)} className="form-control" placeholder="First Name" readOnly />
+                                <input type="text" ref={this.fname} value={this.state.order.name || ''} onChange={(e) => this.updateField("fname", e)} className="form-control" placeholder="First Name" readOnly />
                             </div>
                             <div className="form-group col-md-6">
                                 <label>Email</label>

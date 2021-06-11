@@ -1,5 +1,5 @@
 import React from 'react';
-import $ from 'jquery';
+import moment from "moment";
 
 class Create extends React.Component {
     constructor(props) {
@@ -22,6 +22,7 @@ class Create extends React.Component {
         }
         this.fromNo = React.createRef();
         this.toNo = React.createRef();
+
     }
 
     componentDidMount() {
@@ -60,6 +61,7 @@ class Create extends React.Component {
             // console.log("fromNo & toNo", fromNumber, toNumber);
             let newArray = [];
             var funcs = [];
+            let date = moment().format("MM/DD/YYYY");
             for (var i = fromNumber; i < toNumber; i++) {
                 funcs[i] = (function () {
                     var index = i;
@@ -72,7 +74,8 @@ class Create extends React.Component {
                             "phone": "0123456789",
                             "price": "" + index * 5,
                             "total": 0,
-                            "date": "03/4/20",
+                            // "date": "03/4/20",
+                            "date": date,
                             "uid": index
                         }
                     return function () {
@@ -100,6 +103,8 @@ class Create extends React.Component {
         let fromNo = this.fromNo.current.value;
         let toNo = this.toNo.current.value;
         this.createObj(fromNo, toNo);
+        this.fromNo.current.value = '';
+        this.toNo.current.value = '';
     }
 
     createData(e) {
@@ -123,7 +128,7 @@ class Create extends React.Component {
                 }]
             }, () => {
                 // console.log("state createdOrders", this.state.createdOrders);
-            })
+            });
         }
     }
 
@@ -133,12 +138,12 @@ class Create extends React.Component {
                 <div className='row'>
                     <div className='col-xl-12'>
                         <div style={this.loginFormStyle}>
-                            <form>
+                            <form ref={this.formRef}>
                                 <div className="form-group text-left">
                                     <label htmlFor="exampleInputEmail1">From Number</label>
                                     <input type="number"
                                            className="form-control"
-                                           id="fromNumber"
+                                           id="fromNo"
                                            ref={this.fromNo}
                                            aria-describedby="numberHelp"
                                            placeholder="Enter from Number"
@@ -151,7 +156,7 @@ class Create extends React.Component {
                                     <label htmlFor="exampleInputPassword1">To Number</label>
                                     <input type="number"
                                            className="form-control"
-                                           id="toNumber"
+                                           id="toNo"
                                            ref={this.toNo}
                                            placeholder="Enter to Number"
                                     />
@@ -179,6 +184,7 @@ class Create extends React.Component {
                                 <th>Items</th>
                                 <th>Cost</th>
                                 <th>Total</th>
+                                <th>Date</th>
                             </tr>
                             {
                                 this.state.createdOrders.map(order =>
@@ -189,6 +195,7 @@ class Create extends React.Component {
                                         <td className="">{order.items}</td>
                                         <td className="">{order.price}</td>
                                         <td className="">{order.items * order.price}</td>
+                                        <td className="">{order.date}</td>
                                     </tr>
                                 )
                             }

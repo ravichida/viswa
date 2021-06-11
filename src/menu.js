@@ -26,9 +26,14 @@ class Menu extends React.Component {
 
     componentDidMount(links) {
         // console.log("menu.js", window.location.pathname);
-        let location = window.location.pathname;
+        // let location = window.location.pathname;
+        let url = window.location.href;
+        let last = url.replace(/\/$/, "").split('/').splice(-1, 1)[0];
+        // console.log("last", last);
         this.Urls.map(link => {
-            if (location === link.path) {
+            // console.log("link.path", link.path.split( '/' ).splice(-1, 1)[0]);
+            let linkpath = link.path.split( '/' ).splice(-1, 1)[0];
+            if (last === linkpath) {
                 this.setState({activeId: link.id});
                 // console.log("active id", link.path, link.id);
             }

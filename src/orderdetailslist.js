@@ -54,12 +54,12 @@ class OrderDetailsList extends React.Component {
     }
     componentWillReceiveProps(newProps) {
         if( newProps.orders != this.props.orders ) {
-            console.log("this.props.orders", this.props.orders);
+            // console.log("this.props.orders", this.props.orders);
             setTimeout(() => {
                 this.setState((previousState) => ({
                     jsonOrders : this.props.orders
                 }), () => {
-                    console.log("this.props.orders", this.props.orders);
+                    // console.log("this.props.orders", this.props.orders);
                     this.setState({
                         orders: this.state.jsonOrders.slice(0,10)
                     });
