@@ -1,6 +1,5 @@
 import React from "react";
 import Home from "./home";
-import useLocalStorage from './useLocalStorage';
 
 class Login extends React.Component {
     loginFormStyle = {
@@ -43,18 +42,13 @@ class Login extends React.Component {
         let passwordValue = this.password.current.value;
 
         console.log("Values", emailValue, passwordValue);
-        useLocalStorage("login", {
-            email: "ravi.chida@gmail.com",
-            password: "chida"
-        })
-        let login = useLocalStorage("login");
-        console.log("login", login);
         if (emailValue === "ravi.chida@gmail.com" && passwordValue === "chida") {
             console.log("Login OK");
             // sendDetailsToServer()
             window.location.pathname = "/home";
         } else {
-            JSON.stringify(this.state);
+            //JSON.stringify(this.state);
+            alert("Email or Password did not match");
             console.log("Email or Password did not match");
         }
         //window.location.pathname = "/orders";
