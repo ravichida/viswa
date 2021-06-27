@@ -21,7 +21,7 @@ class ModalDialogReadOnly extends React.Component {
           <div className="modal-dialog" style={maxwidth}>
             <div className="modal-content">
               <div className="modal-header">
-                <h4 className="modal-title">Modal Options</h4>
+                <h4 className="modal-title">Order Details</h4>
                 <button type="button" className="close" data-dismiss="modal">&times;</button>
               </div>
               <div className="modal-body">
