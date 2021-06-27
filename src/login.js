@@ -58,6 +58,11 @@ class Login extends React.Component {
     render() {
         return (<div>
             <div className='row'>
+                <div className='col-xl-12 pt-3 pb-3'>
+                    <h3>Login</h3>
+                </div>
+            </div>
+            <div className='row'>
                 <div className='col-xl-12'>
                     <div style={this.loginFormStyle}>
                         <form>
@@ -69,7 +74,7 @@ class Login extends React.Component {
                                        ref={this.email}
                                        aria-describedby="emailHelp"
                                        placeholder="Enter email"
-                                       // onChange={this.handleChange}
+                                    // onChange={this.handleChange}
                                 />
                                 {/*<small id="emailHelp" className="form-text text-muted">We'll never share your email with*/}
                                 {/*    anyone else.</small>*/}

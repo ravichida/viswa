@@ -13,8 +13,6 @@ class Search extends React.Component {
         paddingTop: "10px"
     }
 
-    state = {searchString: ''}
-
     constructor(props) {
         super(props);
         this.editData = this.editData.bind(this);
@@ -22,29 +20,10 @@ class Search extends React.Component {
         this.removeData = this.removeData.bind(this);
         this.handleChange = this.handleChange.bind(this);
 
-        // this.dflex = React.createRef();
+        this.state = {
+            searchString: ''
+        }
     }
-
-    /*componentDidMount() {
-        const width = this.dflex.current.clientWidth;
-        let totalElements = Math.round(width / 336) || 0;
-        console.log("totalElements ", totalElements);
-        let totalMargin = width - (totalElements * 336) || 0;
-        console.log("totalMargin ", totalMargin);
-        let marginLeft = Math.abs(Math.round(totalMargin / (totalElements * 2))) || 0;
-        let marginRight = Math.abs(Math.round(totalMargin / (totalElements * 2))) || 0;
-        console.log("marginLeft ", marginLeft);
-        console.log("marginRight ", marginRight);
-        this.setState(
-            {
-                width: width,
-                marginLeft: marginLeft,
-                marginRight: marginRight
-            },
-            () => console.log(this.state.width)
-        );
-
-    }*/
 
     handleChange = (e) => {
         this.setState({searchString: e.target.value});

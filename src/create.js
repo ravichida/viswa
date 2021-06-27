@@ -69,7 +69,7 @@ class Create extends React.Component {
                         {
                             "email": "email@sample.com",
                             "items": "" + index,
-                            "name": "Sample",
+                            "name": "Sample " + index,
                             "order": "Sample Order " + index,
                             "phone": "0123456789",
                             "price": "" + index * 5,
