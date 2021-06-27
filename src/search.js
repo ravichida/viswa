@@ -82,9 +82,6 @@ class Search extends React.Component {
                                         <div className="card-body">
                                             <h5 className="card-title"><span
                                                 className="text-danger">Name: </span> {user.name}</h5>
-                                            <h5 className="card-title"><span
-                                                className="">First Name: </span> {user.fname}, <span
-                                                className="">Last Name: </span> {user.lname}</h5>
                                             <p className="card-text"><span
                                                 className="">Order No: </span> {user.orderno}</p>
                                             <p className="card-text"><span

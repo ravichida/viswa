@@ -9,7 +9,7 @@ class ModalDialog extends React.Component {
   }
 
   updateList = (user) => {
-    if (typeof this.props.update === 'function') {
+    if (typeof(this.props.update) === 'function') {
       // console.log("updateParent ModalDialog.js", user);
       this.props.update(user);
     }

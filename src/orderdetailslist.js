@@ -100,24 +100,12 @@ class OrderDetailsList extends React.Component {
         }
     }
 
-    /*changePage(pageNo) {
-        // console.log("pageNo",pageNo);
-        let orders = [];
-        let jsonOrders = [...this.state.jsonOrders];
-        // console.log("slice", stateUsers.slice(pageNo-1));
-        orders = jsonOrders.slice(pageNo - 1);
-        this.setState({
-            orders: [...orders]
-        }, () => {
-            // console.log("state pages", this.state.pages);
-        });
-    }*/
-
     updateApp(order) {
+        // if (typeof (this.props.update) === 'function') {
         if (typeof (this.props.update) === 'function') {
-            // console.log("updateParent OrderDList.js", user);
+            console.log("updateParent OrderDList.js", order);
             this.props.update(order);
-            $("#orderModal").modal({show: false});
+            $("#orderModal").modal({ show: false });
             $(".modal-backdrop").remove();
         }
     }
@@ -193,12 +181,18 @@ class OrderDetailsList extends React.Component {
                 </div>
                 <div className='row'>
                     <div className='col-xl-12 d-flex justify-content-center'>
-                        <Pagenation jsonOrders={this.state.jsonOrders} changePage={this.changePage}/>
+                        <Pagenation
+                            jsonOrders={this.state.jsonOrders}
+                            changePage={this.changePage}
+                        />
                     </div>
                 </div>
                 <div className='row'>
                     <div className='col-xl-12'>
-                        <ModalDialog user={this.state.user} update={this.updateApp}/>
+                        <ModalDialog
+                            user={this.state.user}
+                            update={this.updateApp}
+                        />
                         <div>
                         </div>
                     </div>

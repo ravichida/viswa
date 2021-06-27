@@ -22,17 +22,17 @@ import {Typeahead, Fragment, Control} from 'react-typeahead';
 import './style.css';
 
 class App extends React.Component {
-    constructor(props) {
-        super(props);
-        Firebase.initializeApp(config);
+        constructor(props) {
+            super(props);
+            Firebase.initializeApp(config);
 
-        this.state = {
-            users: []
+            this.state = {
+                users: []
+            }
+            this.addData = this.addData.bind(this);
+            this.updateData = this.updateData.bind(this);
+            this.removeData = this.removeData.bind(this);
         }
-        this.addData = this.addData.bind(this);
-        this.updateData = this.updateData.bind(this);
-        this.removeData = this.removeData.bind(this);
-    }
 
     /*componentDidMount() {
       let location = window.location.pathname;
@@ -69,20 +69,24 @@ class App extends React.Component {
                     <div className="row  my-2">
                         <div className="col-xl-12">
                             <Switch>
-                                <Route exact path="/" render={props => <Login users={this.state.users}/>}/>
-                                <Route exact path="/home"
-                                       render={props => <Home orders={this.state.users} update={this.updateData}
-                                                              remove={this.removeData}/>}/>
-                                {/*<Route exact path="/" render={props => <Home users={this.state.users} update={this.updateData} remove={this.removeData} />} />*/}
-                                <Route exact path="/orders" render={props => <OrderDetailsList orders={this.state.users}
-                                                                                               update={this.updateData}
-                                                                                               remove={this.removeData}/>}/>
-                                {/* <Route exact path="/od" render={props => <OrderDetails users={this.state.users} update={this.updateData} remove={this.removeData} />} /> */}
-                                <Route exact path="/search"
-                                       render={props => <Search users={this.state.users} update={this.updateData}
-                                                                remove={this.removeData}/>}/>
-                                <Route exact path="/add"
-                                       render={props => <AddOrder users={this.state.users} action={this.addData}/>}/>
+                                <Route exact path="/" render={props => <Login
+                                    users={this.state.users} />}
+                                />
+                                <Route exact path="/home" render={props => <Home orders={this.state.users} update={this.updateData} remove={this.removeData}/>} />
+                                <Route exact path="/orders" render={props => <OrderDetailsList
+                                    orders={this.state.users}
+                                    change={this.updateData}
+                                    remove={this.removeData} />}
+                                />
+                                <Route exact path="/search" render={props => <Search
+                                    users={this.state.users}
+                                    update={this.updateData}
+                                    remove={this.removeData} />}
+                                />
+                                <Route exact path="/add" render={props => <AddOrder
+                                    users={this.state.users}
+                                    action={this.addData} />}
+                                />
                                 <Route exact path="/create" render={props => <Create orders={this.state.users}
                                                                                      createDada={this.createData}/>}/>
                                 <Route render={(base) => <Redirect to={base}/>}/>
@@ -156,7 +160,7 @@ class App extends React.Component {
     }
 
     updateData = (user) => {
-        // console.log("updateData fun in app.js", user);
+        console.log("updateData.app.js, User: ", user);
         if (user) {
             // console.log("if user in app.js");
             let name = user.name;
@@ -185,6 +189,7 @@ class App extends React.Component {
                 users[devIndex].price = price;
                 users[devIndex].startdate = startdate;
                 this.setState({users: users});
+                console.log("Update Data", users[devIndex])
             }
             // console.log("Updated State appjs", this.state.users);
         }

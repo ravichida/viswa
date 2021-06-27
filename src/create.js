@@ -149,8 +149,6 @@ class Create extends React.Component {
                                            placeholder="Enter from Number"
                                         // onChange={this.handleChange}
                                     />
-                                    {/*<small id="emailHelp" className="form-text text-muted">We'll never share your email with*/}
-                                    {/*    anyone else.</small>*/}
                                 </div>
                                 <div className="form-group text-left">
                                     <label htmlFor="exampleInputPassword1">To Number</label>
