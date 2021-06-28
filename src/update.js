@@ -3,7 +3,7 @@ import moment from "moment";
 import PropTypes from 'prop-types';
 import DayPickerInput from "react-day-picker/DayPickerInput";
 import "../node_modules/react-day-picker/lib/style.css";
-import { confirmAlert } from 'react-confirm-alert';
+import {confirmAlert} from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 
 class Update extends React.Component {
@@ -49,7 +49,7 @@ class Update extends React.Component {
 
 
     handleDayChange = selectedDay => {
-        this.setState({ 
+        this.setState({
             user: {
                 ...this.state.user,
                 startdate: moment(selectedDay).format()
@@ -68,6 +68,7 @@ class Update extends React.Component {
             });
         }
     }
+
     updateField = (name, e) => {
         e.preventDefault();
         // console.log("Field Update", name, e.target.value);
@@ -84,10 +85,6 @@ class Update extends React.Component {
         if (typeof this.props.update === 'function') {
             // console.log("update user", this.state.user);
             this.props.update(this.state.user);
-            /*if (window.confirm('Please click OK to close the window?')) {
-                console.log("dialog-close-update.js");
-                this.props.close();
-            }*/
         }
         // this.resetForm();
     }
@@ -95,7 +92,6 @@ class Update extends React.Component {
     resetForm = () => {
         this.setState(this.baseState)
     }
-
 
 
     render() {
@@ -107,52 +103,68 @@ class Update extends React.Component {
                 <div className='col-xl-12'>
                     <form>
                         <div className="form-row">
-                            <input type='hidden' ref={this.uid} value={this.state.user.uid || ''} />
-                            <div className="form-group col-md-6">
-                                <label>Oder No</label>
-                                {/*<input type="number" ref={this.orderno} value={this.state.user.orderno || ''} readOnly onChange={(e) => this.updateField("orderno", e)} className="form-control" placeholder="Oder No" />*/}
-                                <input type="number" ref={this.orderno} value={this.state.user.orderno || ''} readOnly className="form-control" placeholder="Oder No" />
-                            </div>
-                            <div className="form-group col-md-6">
-                                <label>Oder Name</label>
-                                <input type="text" ref={this.order} value={this.state.user.order || ''} onChange={(e) => this.updateField("order", e)} className="form-control" placeholder="Oder Name" />
-                            </div>
-                            <div className="form-group col-md-6">
-                                <label>Number of Items</label>
-                                <input type="number" ref={this.items} value={this.state.user.items || ''} onChange={(e) => this.updateField("items", e)} className="form-control" placeholder="Number of Items" />
-                            </div>
-                            <div className="form-group col-md-6">
-                                <label>Item Price</label>
-                                <input type="number" ref={this.price} value={this.state.user.price || ''} onChange={(e) => this.updateField("price", e)} className="form-control" placeholder="Item Cost" />
-                            </div>
+                            <input type='hidden' ref={this.uid} value={this.state.user.uid || ''}/>
                             <div className="form-group col-md-6">
                                 <label>Name</label>
-                                <input type="text" ref={this.name} value={this.state.user.name || ''} onChange={(e) => this.updateField("name", e)} className="form-control" placeholder="Name" />
+                                <input type="text" ref={this.name} value={this.state.user.name || ''}
+                                       onChange={(e) => this.updateField("name", e)} className="form-control"
+                                       placeholder="Name"/>
                             </div>
                             <div className="form-group col-md-6">
                                 <label>Email</label>
-                                <input type="text" ref={this.email} value={this.state.user.email || ''} onChange={(e) => this.updateField("email", e)} className="form-control" placeholder="Email" />
+                                <input type="text" ref={this.email} value={this.state.user.email || ''}
+                                       onChange={(e) => this.updateField("email", e)} className="form-control"
+                                       placeholder="Email"/>
                             </div>
                             <div className="form-group col-md-6">
                                 <label>Mobile / Phone No</label>
-                                <input type="number" ref={this.phone} value={this.state.user.phone || ''} onChange={(e) => this.updateField("phone", e)} className="form-control" placeholder="Mobile / Phone No" />
+                                <input type="number" ref={this.phone} value={this.state.user.phone || ''}
+                                       onChange={(e) => this.updateField("phone", e)} className="form-control"
+                                       placeholder="Mobile / Phone No"/>
+                            </div>
+                            <div className="form-group col-md-6">
+                                <label>Oder Name</label>
+                                <input type="text" ref={this.order} value={this.state.user.order || ''}
+                                       onChange={(e) => this.updateField("order", e)} className="form-control"
+                                       placeholder="Oder Name"/>
+                            </div>
+                            <div className="form-group col-md-6">
+                                <label>Oder No</label>
+                                {/*<input type="number" ref={this.orderno} value={this.state.user.orderno || ''} readOnly onChange={(e) => this.updateField("orderno", e)} className="form-control" placeholder="Oder No" />*/}
+                                <input type="number" ref={this.orderno} value={this.state.user.orderno || ''} readOnly
+                                       className="form-control" placeholder="Oder No"/>
+                            </div>
+                            <div className="form-group col-md-6">
+                                <label>Number of Items</label>
+                                <input type="number" ref={this.items} value={this.state.user.items || ''}
+                                       onChange={(e) => this.updateField("items", e)} className="form-control"
+                                       placeholder="Number of Items"/>
+                            </div>
+                            <div className="form-group col-md-6">
+                                <label>Item Price</label>
+                                <input type="number" ref={this.price} value={this.state.user.price || ''}
+                                       onChange={(e) => this.updateField("price", e)} className="form-control"
+                                       placeholder="Item Cost"/>
                             </div>
                             <div className="form-group col-md-6">
                                 <label>Date </label>
-                                    <DayPickerInput
-                                        overlayComponent={CustomOverlay}
-                                        className="form-control"
-                                        name="birthday"
-                                        placeholder="MM/DD/YYYY"
-                                        format="MM/DD/YYYY"
-                                        // value={moment(this.state.selectedDay).format('DD/MM/YYYY')}
-                                        value={moment(this.state.user.startdate).format('MM/DD/YYYY')}
-                                        onDayChange={this.handleDayChange}
-                                    />
+                                <DayPickerInput
+                                    overlayComponent={CustomOverlay}
+                                    className="form-control"
+                                    name="birthday"
+                                    placeholder="MM/DD/YYYY"
+                                    format="MM/DD/YYYY"
+                                    // value={moment(this.state.selectedDay).format('DD/MM/YYYY')}
+                                    value={moment(this.state.user.startdate).format('MM/DD/YYYY')}
+                                    onDayChange={this.handleDayChange}
+                                />
                             </div>
                             <div className="form-group col-md-6">
                                 <label>Total</label>
-                                <input type="number" ref={this.phone} value={(this.state.user.items * this.state.user.price) || ''} onChange={(e) => this.updateField("phone", e)} className="form-control" placeholder="Total" />
+                                <input type="number" ref={this.phone}
+                                       value={(this.state.user.items * this.state.user.price) || ''}
+                                       onChange={(e) => this.updateField("phone", e)} className="form-control"
+                                       placeholder="Total"/>
                             </div>
                             {/* <div className="form-group col-md-6">
                                 <div>
@@ -165,7 +177,9 @@ class Update extends React.Component {
                                 </div>
                             </div> */}
                         </div>
-                        <button type="button" className="btn btn-primary" onClick={this.updateChange} data-toggle="modal" data-target="#orderModal" data-show="false">Save</button>
+                        <button type="button" className="btn btn-primary" onClick={this.updateChange}
+                                data-toggle="modal" data-target="#orderModal" data-show="false">Save
+                        </button>
                         {/*<button type="button" className="btn btn-primary" onClick={this.updateChange} data-show="false">Save</button>*/}
                     </form>
                 </div>
@@ -173,13 +187,14 @@ class Update extends React.Component {
         )
     }
 }
+
 export default Update;
 
 function UpdateBtn(props) {
     return <button type="button" className="btn btn-primary">Save</button>
 }
 
-function CustomOverlay({ classNames, selectedDay, children, ...props }) {
+function CustomOverlay({classNames, selectedDay, children, ...props}) {
     let overlayMargin = {
         marginTop: -200,
         marginLeft: 100,

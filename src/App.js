@@ -161,7 +161,7 @@ class App extends React.Component {
 
     updateData = (user) => {
         console.log("updateData.app.js, User: ", user);
-        if (user) {
+        if (!!user) {
             // console.log("if user in app.js");
             let name = user.name;
             let email = user.email;
@@ -171,9 +171,10 @@ class App extends React.Component {
             let items = user.items;
             let price = user.price;
             let uid = user.uid;
-            let startdate = user.startdate
-            const condition = (name && email && phone && order && orderno && items && price && startdate);
-            if (uid && condition) {
+            let date = user.date;
+            const condition = (name && email && phone && order && orderno && items && price && date);
+            console.log("!!uid", !!uid, !!condition);
+            if (!!uid) {
                 // console.log("Update condition met");
                 const {users} = this.state;
                 const devIndex = users.findIndex(user => {
@@ -187,7 +188,7 @@ class App extends React.Component {
                 users[devIndex].orderno = orderno;
                 users[devIndex].items = items;
                 users[devIndex].price = price;
-                users[devIndex].startdate = startdate;
+                users[devIndex].date = date;
                 this.setState({users: users});
                 console.log("Update Data", users[devIndex])
             }
