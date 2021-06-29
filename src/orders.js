@@ -4,11 +4,12 @@ import ModalDialog from './modalDialog';
 import Pagenation from './pagenation';
 import axios from 'axios';
 
-class OrderDetailsList extends React.Component {
+class Orders extends React.Component {
 
     constructor(props) {
         super(props);
         this.changePage = this.changePage.bind(this);
+        this.update = this.update.bind(this);
         this.state = {
             user: {write: true},
             pages: [],
@@ -100,12 +101,11 @@ class OrderDetailsList extends React.Component {
         }
     }
 
-    updateApp(order) {
-        // if (typeof (this.props.update) === 'function') {
-        if (typeof (this.props.update) === 'function') {
-            console.log("updateParent OrderDList.js", order);
+    update(order) {
+        if (typeof(order) === 'object' && typeof(this.props.update) === 'function') {
+            // console.log("update user search file", order);
             this.props.update(order);
-            $("#orderModal").modal({ show: false });
+            $("#orderModal").modal({show: false});
             $(".modal-backdrop").remove();
         }
     }
@@ -191,7 +191,7 @@ class OrderDetailsList extends React.Component {
                     <div className='col-xl-12'>
                         <ModalDialog
                             user={this.state.user}
-                            update={this.updateApp}
+                            update={this.update}
                         />
                         <div>
                         </div>
@@ -203,4 +203,4 @@ class OrderDetailsList extends React.Component {
 
 }
 
-export default OrderDetailsList;
+export default Orders;

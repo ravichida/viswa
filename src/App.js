@@ -11,7 +11,7 @@ import Firebase from '../node_modules/firebase';
 import config from './config';
 import Login from './login';
 import OrderDetails from './orderdetails';
-import OrderDetailsList from './orderdetailslist';
+import Orders from './orders';
 import AddOrder from './addorder';
 import Home from './home';
 import Search from './search';
@@ -69,27 +69,13 @@ class App extends React.Component {
                     <div className="row  my-2">
                         <div className="col-xl-12">
                             <Switch>
-                                <Route exact path="/" render={props => <Login
-                                    users={this.state.users} />}
-                                />
+                                <Route exact path="/" render={props => <Login users={this.state.users} />} />
                                 <Route exact path="/home" render={props => <Home orders={this.state.users} update={this.updateData} remove={this.removeData}/>} />
-                                <Route exact path="/orders" render={props => <OrderDetailsList
-                                    orders={this.state.users}
-                                    change={this.updateData}
-                                    remove={this.removeData} />}
-                                />
-                                <Route exact path="/search" render={props => <Search
-                                    users={this.state.users}
-                                    update={this.updateData}
-                                    remove={this.removeData} />}
-                                />
-                                <Route exact path="/add" render={props => <AddOrder
-                                    users={this.state.users}
-                                    action={this.addData} />}
-                                />
-                                <Route exact path="/create" render={props => <Create orders={this.state.users}
-                                                                                     createDada={this.createData}/>}/>
-                                <Route render={(base) => <Redirect to={base}/>}/>
+                                <Route exact path="/orders" render={props => <Orders orders={this.state.users} update={(user) => {this.updateData(user)}} remove={this.removeData} />} />
+                                <Route exact path="/search" render={props => <Search users={this.state.users} update={this.updateData} remove={this.removeData} />} />
+                                <Route exact path="/add" render={props => <AddOrder users={this.state.users} action={this.addData} />} />
+                                <Route exact path="/create" render={props => <Create orders={this.state.users} createDada={this.createData}/>}/>
+                                <Route render={(base) => <Redirect to={base}/>} />
                             </Switch>
                         </div>
                     </div>
@@ -160,7 +146,7 @@ class App extends React.Component {
     }
 
     updateData = (user) => {
-        console.log("updateData.app.js, User: ", user);
+        // console.log("updateData.app.js, User: ", user);
         if (!!user) {
             // console.log("if user in app.js");
             let name = user.name;
@@ -173,7 +159,7 @@ class App extends React.Component {
             let uid = user.uid;
             let date = user.date;
             const condition = (name && email && phone && order && orderno && items && price && date);
-            console.log("!!uid", !!uid, !!condition);
+            // console.log("!!uid", !!uid, !!condition);
             if (!!uid) {
                 // console.log("Update condition met");
                 const {users} = this.state;
@@ -190,7 +176,7 @@ class App extends React.Component {
                 users[devIndex].price = price;
                 users[devIndex].date = date;
                 this.setState({users: users});
-                console.log("Update Data", users[devIndex])
+                // console.log("Update Data", users[devIndex])
             }
             // console.log("Updated State appjs", this.state.users);
         }

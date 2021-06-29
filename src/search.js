@@ -16,7 +16,7 @@ class Search extends React.Component {
     constructor(props) {
         super(props);
         this.editData = this.editData.bind(this);
-        this.updateApp = this.updateApp.bind(this);
+        this.update = this.update.bind(this);
         this.removeData = this.removeData.bind(this);
         this.handleChange = this.handleChange.bind(this);
 
@@ -94,17 +94,17 @@ class Search extends React.Component {
                 </div>
                 <div className='row'>
                     <div className='col-xl-12'>
-                        <ModalDialog user={this.state.user} update={this.updateApp}/>
+                        <ModalDialog user={this.state.user} update={this.update}/>
                     </div>
                 </div>
             </div>
         );
     }
 
-    updateApp(user) {
-        if (typeof (this.props.update) === 'function') {
-            console.log("update user search file", user);
-            this.props.update(user);
+    update(order) {
+        if (typeof(order) === 'object' && typeof(this.props.update) === 'function') {
+            // console.log("update user search file", user);
+            this.props.update(order);
             $("#orderModal").modal({show: false});
             $(".modal-backdrop").remove();
         }
