@@ -5,7 +5,7 @@ import {useHistory} from "react-router-dom";
 class Menu extends React.Component {
     Urls = [
         // {name: <i className='fas fa-arrow-circle-right'> Login</i>, path: "/", id: 1},
-        {name: <i className='fas fa-home'> Home</i>, path: "/", id: 2},
+        {name: <i className='fas fa-home'> Home</i>, path: "/home", id: 2},
         {name: <i className='fas fa-th-large'> Orders</i>, path: "/orders", id: 3},
         {name: <i className='fas fa-search'> Search</i>, path: "/search", id: 4},
         {name: <i className='fas fa-plus'> Add</i>, path: "/add", id: 5}
