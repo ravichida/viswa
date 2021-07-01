@@ -144,6 +144,7 @@ class Orders extends React.Component {
                                 <th width="7%">Order</th>
                                 <th width="20%">Order Name</th>
                                 <th width="20%">Customer Name</th>
+                                <th width="20%">Status</th>
                                 <th>Items</th>
                                 <th>Cost</th>
                                 <th>Total</th>
@@ -156,6 +157,7 @@ class Orders extends React.Component {
                                         <td className="">{order.orderno}</td>
                                         <td className="">{order.order}</td>
                                         <td className="">{order.name}</td>
+                                        <td className="">{order.status}</td>
                                         <td className="">{order.items}</td>
                                         <td className="">{order.price}</td>
                                         <td className="">{order.items * order.price}</td>
