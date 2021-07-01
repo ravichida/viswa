@@ -25,11 +25,12 @@ class Home extends React.Component {
             <h4 className='my-3'>Orders</h4>
             {this.props.orders.map(order =>
             <div key={order.orderno} className="row rowblock rounded">
-              <div className="col-sm-12 col-md-4 padding"><strong className="title">Order Name</strong>: <i className="fas fa-paperclip"></i> <a href="#" onClick={(event) => this.displayData(order, event)} className="" role="button">{order.order}.</a></div>
-              <div className="col-sm-3 col-md-2 padding"><strong className="title">Items</strong>: {order.items}.</div>
-              <div className="col-sm-3 col-md-2 padding"><strong className="title">Cost</strong>: {order.price}.</div>
-              <div className="col-sm-3 col-md-2 padding"><strong className="title">Total</strong>: {order.items * order.price}.</div>
-              <div className="col-sm-3 col-md-2 padding"><strong className="title">Call</strong>: <a href={"tele:+91"+order.phone} className="" role="button"><i className="fas fa-phone-alt"> </i></a></div>
+              <div className="col-sm-8 col-md-6 padding"><strong className="title">Order Name</strong>: <i className="fas fa-paperclip"></i> <a href="#" onClick={(event) => this.displayData(order, event)} className="" role="button">{order.order}.</a></div>
+              <div className="col-sm-4 col-md-6 padding"><strong className="title">Status</strong>: {order.status}</div>
+              <div className="col-sm-3 col-md-3 padding"><strong className="title">Items</strong>: {order.items}.</div>
+              <div className="col-sm-3 col-md-3 padding"><strong className="title">Cost</strong>: {order.price}.</div>
+              <div className="col-sm-3 col-md-3 padding"><strong className="title">Total</strong>: {order.items * order.price}.</div>
+              <div className="col-sm-3 col-md-3 padding"><strong className="title">Call</strong>: <a href={"tele:+91"+order.phone} className="" role="button"><i className="fas fa-phone-alt"> </i></a></div>
             </div>
             )}
             </div>

@@ -121,11 +121,12 @@ class AddOrder extends React.Component {
         let email = this.refs.email.value;
         let phone = this.refs.phone.value;
         let order = this.refs.order.value;
+        let status = "Not Completed";
         let items = this.refs.items.value;
         let price = this.refs.price.value;
         let uid = parseInt(this.refs.orderno.value);
         let startDate = this.state.startDate
-        const condition = (name && email && phone && order && orderno && items && price && startDate);
+        const condition = (name && email && phone && order && status && orderno && items && price && startDate);
         if (!!uid) {
             // const uid = new Date().getTime().toString();
             const user = {
@@ -133,6 +134,7 @@ class AddOrder extends React.Component {
                 "email": email,
                 "phone": phone,
                 "order": order,
+                "status": status,
                 "orderno": parseInt(orderno),
                 "items": parseInt(items),
                 "price": parseInt(price),
@@ -159,6 +161,7 @@ class AddOrder extends React.Component {
             "items": "200",
             "name": "Ravi Test",
             "order": "Ravi Books",
+            "status": "Not Completed",
             "orderno": "8001",
             "phone": "8123456789",
             "price": "50",

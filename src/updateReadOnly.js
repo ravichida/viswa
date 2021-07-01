@@ -73,12 +73,28 @@ class UpdateReadOnly extends React.Component {
                         <div className="form-row">
                             <input type='hidden' ref={this.uid} value={this.state.order.uid || ''} />
                             <div className="form-group col-md-6">
-                                <label>Oder No</label>
-                                <input type="text" ref={this.orderno} value={this.state.order.orderno || ''} onChange={(e) => this.updateField("orderno", e)} className="form-control" placeholder="Oder No" readOnly />
+                                <label>Name</label>
+                                <input type="text" ref={this.name} value={this.state.order.name || ''} onChange={(e) => this.updateField("name", e)} className="form-control" placeholder="Name" readOnly />
+                            </div>
+                            <div className="form-group col-md-6">
+                                <label>Email</label>
+                                <input type="text" ref={this.email} value={this.state.order.email || ''} onChange={(e) => this.updateField("email", e)} className="form-control" placeholder="Email" readOnly />
+                            </div>
+                            <div className="form-group col-md-6">
+                                <label>Mobile / Phone No</label>
+                                <input type="number" ref={this.phone} value={this.state.order.phone || ''} onChange={(e) => this.updateField("phone", e)} className="form-control" placeholder="Mobile / Phone No" readOnly />
                             </div>
                             <div className="form-group col-md-6">
                                 <label>Oder Name</label>
                                 <input type="text" ref={this.order} value={this.state.order.order || ''} onChange={(e) => this.updateField("order", e)} className="form-control" placeholder="Oder Name" readOnly />
+                            </div>
+                            <div className="form-group col-md-6">
+                                <label>Oder No</label>
+                                <input type="text" ref={this.orderno} value={this.state.order.orderno || ''} onChange={(e) => this.updateField("orderno", e)} className="form-control" placeholder="Oder No" readOnly />
+                            </div>
+                            <div className="form-group col-md-6">
+                                <label>Status</label>
+                                <input type="text" ref={this.status} value={this.state.order.status || ''} onChange={(e) => this.updateField("status", e)} className="form-control" placeholder="Status" readOnly />
                             </div>
                             <div className="form-group col-md-6">
                                 <label>Number of Items</label>
@@ -91,18 +107,6 @@ class UpdateReadOnly extends React.Component {
                             <div className="form-group col-md-6">
                                 <label>Total</label>
                                 <input type="text" ref={this.total} value={this.state.order.items * this.state.order.price || ''} onChange={(e) => this.updateField("total", e)} className="form-control" placeholder="Total Cost" readOnly />
-                            </div>
-                            <div className="form-group col-md-6">
-                                <label>Name</label>
-                                <input type="text" ref={this.name} value={this.state.order.name || ''} onChange={(e) => this.updateField("name", e)} className="form-control" placeholder="Name" readOnly />
-                            </div>
-                            <div className="form-group col-md-6">
-                                <label>Email</label>
-                                <input type="text" ref={this.email} value={this.state.order.email || ''} onChange={(e) => this.updateField("email", e)} className="form-control" placeholder="Email" readOnly />
-                            </div>
-                            <div className="form-group col-md-6">
-                                <label>Mobile / Phone No</label>
-                                <input type="number" ref={this.phone} value={this.state.order.phone || ''} onChange={(e) => this.updateField("phone", e)} className="form-control" placeholder="Mobile / Phone No" readOnly />
                             </div>
                             <div className="form-group col-md-6">
                                 <label>Date</label>

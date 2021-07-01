@@ -62,9 +62,15 @@ class Search extends React.Component {
                                             <h5 className="card-title"><span
                                                 className="text-danger">Name: </span> {user.name}</h5>
                                             <p className="card-text"><span
-                                                className="">Order No: </span> {user.orderno}</p>
+                                                className="">Email: </span>{user.email}</p>
+                                            <p className="card-text"><span
+                                                className="">Mobole: </span>{user.phone}</p>
                                             <p className="card-text"><span
                                                 className="">Order: </span> {user.order}</p>
+                                            <p className="card-text"><span
+                                                className="">Order No: </span> {user.orderno}</p>
+                                            <p className="card-text"><span
+                                                className="">Status: </span> {user.status}</p>
                                             <p className="card-text"><span
                                                 className="">Items: </span>{user.items}, <span
                                                 className="">Price: </span><i
@@ -72,10 +78,6 @@ class Search extends React.Component {
                                             <p className="card-text"><span
                                                 className="">Total: </span><i
                                                 className="fa fa-inr"></i> {user.items * user.price}</p>
-                                            <p className="card-text"><span
-                                                className="">Email: </span>{user.email}</p>
-                                            <p className="card-text"><span
-                                                className="">Mobole: </span>{user.phone}</p>
                                             <p className="card-text"><span
                                                 className="">Start Date: </span>{moment(user.startdate).format('DD/MM/YYYY')}
                                             </p>

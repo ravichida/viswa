@@ -18,6 +18,7 @@ class Update extends React.Component {
         this.email = React.createRef();
         this.phone = React.createRef();
         this.order = React.createRef();
+        this.status = React.createRef();
         this.orderno = React.createRef();
         this.items = React.createRef();
         this.price = React.createRef();
@@ -37,6 +38,7 @@ class Update extends React.Component {
             email: '',
             phone: '',
             order: '',
+            status: '',
             orderno: '',
             items: 0,
             price: 0,
@@ -133,6 +135,12 @@ class Update extends React.Component {
                                 {/*<input type="number" ref={this.orderno} value={this.state.user.orderno || ''} readOnly onChange={(e) => this.updateField("orderno", e)} className="form-control" placeholder="Oder No" />*/}
                                 <input type="number" ref={this.orderno} value={this.state.user.orderno || ''} readOnly
                                        className="form-control" placeholder="Oder No"/>
+                            </div>
+                            <div className="form-group col-md-6">
+                                <label>Status</label>
+                                <input type="text" ref={this.status} value={this.state.user.status || ''}
+                                       onChange={(e) => this.updateField("status", e)} className="form-control"
+                                       placeholder="Status"/>
                             </div>
                             <div className="form-group col-md-6">
                                 <label>Number of Items</label>
